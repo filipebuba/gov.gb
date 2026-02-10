@@ -1,0 +1,32 @@
+{
+  "name": "GOV-GB — Governo Digital da Guiné-Bissau",
+  "short_name": "GOV-GB",
+  "description": "Plataforma de Governo Digital da Guiné-Bissau. Identidade digital, serviços públicos, e inclusão para 2.2M guineenses.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8faf9",
+  "theme_color": "#1a7a4c",
+  "orientation": "portrait-primary",
+  "categories": ["government", "utilities"],
+  "lang": "pt",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

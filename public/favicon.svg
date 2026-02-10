@@ -1,0 +1,13 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="32" cy="32" r="30" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  
+  <!-- Red Shield -->
+  <path d="M14 18C14 10 20 8 32 8C44 8 50 10 50 18V38C50 48 42 54 32 54C22 54 14 48 14 38V18Z" fill="#CE1126"/>
+  
+  <!-- Black Star -->
+  <path d="M32 16L34.5 23.5H42.5L36 28.2L38.5 35.7L32 31L25.5 35.7L28 28.2L21.5 23.5H29.5L32 16Z" fill="#000000"/>
+  
+  <!-- Shell -->
+  <path d="M24 44C24 48 28 51 32 51C36 51 40 48 40 44C40 42 38 40 32 40C26 40 24 42 24 44Z" fill="#FCD116"/>
+  <path d="M32 40V51M28 41L27 49M36 41L37 49" stroke="#000000" stroke-width="0.5" stroke-linecap="round"/>
+</svg>

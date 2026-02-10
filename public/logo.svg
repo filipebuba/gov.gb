@@ -1,0 +1,22 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Modern Official Symbol -->
+  <circle cx="30" cy="30" r="28" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  
+  <!-- Red Shield Fragment -->
+  <path d="M12 20C12 12 18 10 30 10C42 10 48 12 48 20V35C48 43 40 48 30 48C20 48 12 43 12 35V20Z" fill="#CE1126"/>
+  
+  <!-- Black Star -->
+  <path d="M30 16L32.2 22.8H39.4L33.6 27.1L35.8 33.9L30 29.6L24.2 33.9L26.4 27.1L20.6 22.8H27.8L30 16Z" fill="#000000"/>
+  
+  <!-- Stylized Yellow Scallop Shell -->
+  <path d="M22 40C22 44 26 46 30 46C34 46 38 44 38 40C38 38 36 36 30 36C24 36 22 38 22 40Z" fill="#FCD116"/>
+  <path d="M30 36V46M26 37L25 44M34 37L35 44" stroke="#000000" stroke-width="0.5" stroke-linecap="round"/>
+  
+  <!-- Abstract Green Branches -->
+  <path d="M10 35C8 30 8 20 12 15" stroke="#009E49" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+  <path d="M50 35C52 30 52 20 48 15" stroke="#009E49" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+  
+  <!-- Typography -->
+  <text x="70" y="38" fill="#0F172A" style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.05em;">GOV-GB</text>
+  <text x="70" y="52" fill="#64748B" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;">Governo Digital</text>
+</svg>
