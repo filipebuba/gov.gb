@@ -3,47 +3,50 @@
 import { Users, FileText, UserCheck, ClipboardList } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import type { DashboardStats } from '@/types';
+import { useTranslation } from '@/hooks/use-translation';
 
 interface StatsCardsProps {
   stats: DashboardStats;
 }
 
-const cards = [
-  {
-    key: 'totalCitizens' as const,
-    label: 'Cidadaos Registados',
-    icon: Users,
-    bgColor: 'bg-emerald-50 dark:bg-emerald-950/40',
-    iconColor: 'text-emerald-600 dark:text-emerald-400',
-    accentColor: 'border-l-emerald-500',
-  },
-  {
-    key: 'totalServices' as const,
-    label: 'Servicos Disponiveis',
-    icon: FileText,
-    bgColor: 'bg-blue-50 dark:bg-blue-950/40',
-    iconColor: 'text-blue-600 dark:text-blue-400',
-    accentColor: 'border-l-blue-500',
-  },
-  {
-    key: 'totalAgents' as const,
-    label: 'Agentes Ativos',
-    icon: UserCheck,
-    bgColor: 'bg-amber-50 dark:bg-amber-950/40',
-    iconColor: 'text-amber-600 dark:text-amber-400',
-    accentColor: 'border-l-amber-500',
-  },
-  {
-    key: 'totalRequests' as const,
-    label: 'Pedidos de Servico',
-    icon: ClipboardList,
-    bgColor: 'bg-purple-50 dark:bg-purple-950/40',
-    iconColor: 'text-purple-600 dark:text-purple-400',
-    accentColor: 'border-l-purple-500',
-  },
-];
-
 export function StatsCards({ stats }: StatsCardsProps) {
+  const { t } = useTranslation();
+
+  const cards = [
+    {
+      key: 'totalCitizens' as const,
+      label: t.dashboard.totalCitizens,
+      icon: Users,
+      bgColor: 'bg-emerald-50 dark:bg-emerald-950/40',
+      iconColor: 'text-emerald-600 dark:text-emerald-400',
+      accentColor: 'border-l-emerald-500',
+    },
+    {
+      key: 'totalServices' as const,
+      label: t.dashboard.totalServices,
+      icon: FileText,
+      bgColor: 'bg-blue-50 dark:bg-blue-950/40',
+      iconColor: 'text-blue-600 dark:text-blue-400',
+      accentColor: 'border-l-blue-500',
+    },
+    {
+      key: 'totalAgents' as const,
+      label: t.dashboard.activeAgents,
+      icon: UserCheck,
+      bgColor: 'bg-amber-50 dark:bg-amber-950/40',
+      iconColor: 'text-amber-600 dark:text-amber-400',
+      accentColor: 'border-l-amber-500',
+    },
+    {
+      key: 'totalRequests' as const,
+      label: t.dashboard.totalRequests,
+      icon: ClipboardList,
+      bgColor: 'bg-purple-50 dark:bg-purple-950/40',
+      iconColor: 'text-purple-600 dark:text-purple-400',
+      accentColor: 'border-l-purple-500',
+    },
+  ];
+
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
       {cards.map((card) => {

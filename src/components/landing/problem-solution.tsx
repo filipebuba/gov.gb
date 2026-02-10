@@ -1,3 +1,5 @@
+"use client";
+
 import {
   AlertTriangle,
   XCircle,
@@ -8,46 +10,49 @@ import {
   Smartphone,
   BarChart3,
 } from "lucide-react";
-
-const challenges = [
-  {
-    icon: <XCircle className="size-5 text-gov-red" />,
-    text: "~500 mil cidadaos sem qualquer documento de identidade oficial",
-  },
-  {
-    icon: <Ban className="size-5 text-gov-red" />,
-    text: "Servicos publicos centralizados em Bissau, inacessiveis nas regioes",
-  },
-  {
-    icon: <Clock className="size-5 text-gov-red" />,
-    text: "Processos burocraticos manuais, lentos e propensos a erros",
-  },
-  {
-    icon: <AlertTriangle className="size-5 text-gov-red" />,
-    text: "Apenas 32% da populacao com acesso a internet",
-  },
-];
-
-const solutions = [
-  {
-    icon: <Fingerprint className="size-5 text-primary" />,
-    text: "Simenti ID: sistema biometrico para identidade digital universal",
-  },
-  {
-    icon: <Smartphone className="size-5 text-primary" />,
-    text: "Acesso USSD: servicos publicos via qualquer telemovel basico",
-  },
-  {
-    icon: <BarChart3 className="size-5 text-primary" />,
-    text: "Dashboard governamental com dados em tempo real para decisores",
-  },
-  {
-    icon: <CheckCircle2 className="size-5 text-primary" />,
-    text: "Arquitectura offline-first adaptada a realidade guineense",
-  },
-];
+import { useTranslation } from "@/hooks/use-translation";
 
 export function ProblemSolution() {
+  const { t } = useTranslation();
+
+  const challenges = [
+    {
+      icon: <XCircle className="size-5 text-gov-red" />,
+      text: t.landing.challenge1,
+    },
+    {
+      icon: <Ban className="size-5 text-gov-red" />,
+      text: t.landing.challenge2,
+    },
+    {
+      icon: <Clock className="size-5 text-gov-red" />,
+      text: t.landing.challenge3,
+    },
+    {
+      icon: <AlertTriangle className="size-5 text-gov-red" />,
+      text: t.landing.challenge4,
+    },
+  ];
+
+  const solutions = [
+    {
+      icon: <Fingerprint className="size-5 text-primary" />,
+      text: t.landing.solution1,
+    },
+    {
+      icon: <Smartphone className="size-5 text-primary" />,
+      text: t.landing.solution2,
+    },
+    {
+      icon: <BarChart3 className="size-5 text-primary" />,
+      text: t.landing.solution3,
+    },
+    {
+      icon: <CheckCircle2 className="size-5 text-primary" />,
+      text: t.landing.solution4,
+    },
+  ];
+
   return (
     <section id="problem-solution" className="relative py-20 sm:py-28">
       {/* Subtle background accent */}
@@ -57,10 +62,10 @@ export function ProblemSolution() {
         {/* Section header */}
         <div className="mb-14 text-center sm:mb-20">
           <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-            Desafio e resposta
+            {t.landing.challengeAndResponse}
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Do problema a solucao
+            {t.landing.fromProblemToSolution}
           </h2>
         </div>
 
@@ -73,16 +78,14 @@ export function ProblemSolution() {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-foreground sm:text-2xl">
-                  O Desafio
+                  {t.landing.problemTitle}
                 </h3>
                 <div className="mt-0.5 h-0.5 w-12 rounded-full bg-gov-red" />
               </div>
             </div>
 
             <p className="mb-6 text-sm leading-relaxed text-muted-foreground sm:text-base">
-              A Guine-Bissau e um dos paises menos digitalizados do mundo.
-              Milhoes de cidadaos estao excluidos de servicos basicos por falta
-              de identidade e infraestrutura.
+              {t.landing.challengeDesc}
             </p>
 
             <ul className="space-y-4">
@@ -108,16 +111,14 @@ export function ProblemSolution() {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-foreground sm:text-2xl">
-                  A Solucao
+                  {t.landing.solutionTitle}
                 </h3>
                 <div className="mt-0.5 h-0.5 w-12 rounded-full bg-primary" />
               </div>
             </div>
 
             <p className="mb-6 text-sm leading-relaxed text-muted-foreground sm:text-base">
-              GOV-GB implementa a ENTD.GW com tecnologia moderna, open-source e
-              adaptada. Cada modulo resolve um problema concreto dos cidadaos
-              guineenses.
+              {t.landing.solutionDesc}
             </p>
 
             <ul className="space-y-4">

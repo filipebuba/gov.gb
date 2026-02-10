@@ -4,6 +4,7 @@ import { QRCodeSVG } from 'qrcode.react';
 import { Button } from '@/components/ui/button';
 import { Download, Shield } from 'lucide-react';
 import type { Citizen } from '@/types';
+import { useTranslation } from '@/hooks/use-translation';
 
 interface IdCardProps {
   citizen: Citizen;
@@ -28,21 +29,22 @@ function formatDate(dateStr: string | null): string {
   });
 }
 
-function formatGender(g: string): string {
-  switch (g) {
-    case 'M':
-      return 'Masculino';
-    case 'F':
-      return 'Feminino';
-    case 'O':
-      return 'Outro';
-    default:
-      return g;
-  }
-}
-
 export function IdCard({ citizen }: IdCardProps) {
+  const { t } = useTranslation();
   const initials = getInitials(citizen.full_name);
+
+  function formatGender(g: string): string {
+    switch (g) {
+      case 'M':
+        return t.simenti.male;
+      case 'F':
+        return t.simenti.female;
+      case 'O':
+        return t.simenti.other;
+      default:
+        return g;
+    }
+  }
 
   return (
     <div className="flex flex-col items-center gap-4">
@@ -67,7 +69,7 @@ export function IdCard({ citizen }: IdCardProps) {
             {/* Header */}
             <div className="text-center">
               <h2 className="text-[10px] font-bold uppercase tracking-wider text-green-800 sm:text-xs">
-                Republica da Guine-Bissau
+                {t.simenti.republic}
               </h2>
               <p className="text-[9px] text-muted-foreground sm:text-[10px]">
                 Simenti ID &mdash; Identidade Digital
@@ -89,7 +91,7 @@ export function IdCard({ citizen }: IdCardProps) {
               <div className="min-w-0 flex-1 space-y-1">
                 <div>
                   <p className="text-[9px] uppercase tracking-wider text-muted-foreground">
-                    Nome
+                    {t.simenti.nameField}
                   </p>
                   <p className="truncate text-sm font-semibold leading-tight text-foreground sm:text-base">
                     {citizen.full_name}
@@ -98,7 +100,7 @@ export function IdCard({ citizen }: IdCardProps) {
                 <div className="grid grid-cols-2 gap-x-3 gap-y-0.5">
                   <div>
                     <p className="text-[8px] uppercase tracking-wider text-muted-foreground">
-                      Nascimento
+                      {t.simenti.birthField}
                     </p>
                     <p className="text-[10px] font-medium sm:text-xs">
                       {formatDate(citizen.birth_date)}
@@ -106,7 +108,7 @@ export function IdCard({ citizen }: IdCardProps) {
                   </div>
                   <div>
                     <p className="text-[8px] uppercase tracking-wider text-muted-foreground">
-                      Genero
+                      {t.simenti.genderField}
                     </p>
                     <p className="text-[10px] font-medium sm:text-xs">
                       {formatGender(citizen.gender)}
@@ -114,14 +116,14 @@ export function IdCard({ citizen }: IdCardProps) {
                   </div>
                   <div>
                     <p className="text-[8px] uppercase tracking-wider text-muted-foreground">
-                      Regiao
+                      {t.simenti.regionField}
                     </p>
                     <p className="text-[10px] font-medium sm:text-xs">{citizen.region}</p>
                   </div>
                   {citizen.tabanca && (
                     <div>
                       <p className="text-[8px] uppercase tracking-wider text-muted-foreground">
-                        Tabanca
+                        {t.simenti.tabancaField}
                       </p>
                       <p className="truncate text-[10px] font-medium sm:text-xs">
                         {citizen.tabanca}
@@ -157,7 +159,7 @@ export function IdCard({ citizen }: IdCardProps) {
                   {citizen.simenti_id}
                 </p>
                 <p className="text-[8px] text-muted-foreground">
-                  Emitido: {formatDate(citizen.created_at)}
+                  {t.simenti.issued} {formatDate(citizen.created_at)}
                 </p>
               </div>
             </div>
@@ -168,7 +170,7 @@ export function IdCard({ citizen }: IdCardProps) {
       {/* Download button (visual only for MVP) */}
       <Button variant="outline" className="gap-2" disabled>
         <Download className="h-4 w-4" />
-        Descarregar Cartao (em breve)
+        {t.simenti.downloadCardSoon}
       </Button>
     </div>
   );

@@ -10,37 +10,40 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useTranslation } from '@/hooks/use-translation';
 
 interface RegistrationChartProps {
   data: { date: string; count: number }[];
 }
 
-function CustomTooltip({
-  active,
-  payload,
-  label,
-}: {
-  active?: boolean;
-  payload?: { value: number }[];
-  label?: string;
-}) {
-  if (!active || !payload?.length) return null;
-
-  return (
-    <div className="rounded-lg border bg-card px-3 py-2 shadow-md">
-      <p className="text-xs font-medium text-muted-foreground">{label}</p>
-      <p className="text-sm font-bold text-foreground">
-        {payload[0].value} registos
-      </p>
-    </div>
-  );
-}
-
 export function RegistrationChart({ data }: RegistrationChartProps) {
+  const { t } = useTranslation();
+
+  function CustomTooltip({
+    active,
+    payload,
+    label,
+  }: {
+    active?: boolean;
+    payload?: { value: number }[];
+    label?: string;
+  }) {
+    if (!active || !payload?.length) return null;
+
+    return (
+      <div className="rounded-lg border bg-card px-3 py-2 shadow-md">
+        <p className="text-xs font-medium text-muted-foreground">{label}</p>
+        <p className="text-sm font-bold text-foreground">
+          {payload[0].value} {t.dashboard.registrations}
+        </p>
+      </div>
+    );
+  }
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-base">Registos por Dia</CardTitle>
+        <CardTitle className="text-base">{t.dashboard.registrationChart}</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="h-[300px] w-full">

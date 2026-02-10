@@ -5,16 +5,19 @@ import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Globe } from "lucide-react";
+import { useTranslation } from "@/hooks/use-translation";
+import type { Locale } from "@/lib/i18n/dictionaries";
 
 const languages = [
-  { code: "PT", label: "Português" },
-  { code: "EN", label: "English" },
-  { code: "KR", label: "Kriol" },
-  { code: "FR", label: "Français" },
+  { code: "PT", locale: "pt" as Locale, label: "Português" },
+  { code: "EN", locale: "en" as Locale, label: "English" },
+  { code: "KR", locale: "kr" as Locale, label: "Kriol" },
+  { code: "FR", locale: "fr" as Locale, label: "Français" },
 ];
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { t, locale, setLocale } = useTranslation();
 
   return (
     <header className="fixed top-1 left-0 right-0 z-50">
@@ -34,7 +37,7 @@ export function Header() {
                 GOV-GB
               </span>
               <span className="hidden text-[10px] leading-none text-muted-foreground sm:block">
-                Governo Digital
+                {t.common.govDigital}
               </span>
             </div>
           </Link>
@@ -46,7 +49,8 @@ export function Header() {
               {languages.map((lang) => (
                 <button
                   key={lang.code}
-                  className="rounded-md px-2 py-1 text-xs font-medium text-muted-foreground transition-colors hover:bg-white hover:text-foreground hover:shadow-sm first:ml-1"
+                  onClick={() => setLocale(lang.locale)}
+                  className={`rounded-md px-2 py-1 text-xs font-medium text-muted-foreground transition-colors hover:bg-white hover:text-foreground hover:shadow-sm first:ml-1 ${locale === lang.locale ? 'bg-white text-foreground shadow-sm' : ''}`}
                   title={lang.label}
                 >
                   {lang.code}
@@ -57,7 +61,7 @@ export function Header() {
             <div className="mx-2 h-6 w-px bg-border" />
 
             <Button asChild size="sm" className="rounded-lg font-semibold">
-              <Link href="/demo">Experimentar Demo</Link>
+              <Link href="/demo">{t.common.tryDemo}</Link>
             </Button>
           </div>
 
@@ -79,7 +83,8 @@ export function Header() {
               {languages.map((lang) => (
                 <button
                   key={lang.code}
-                  className="rounded-md px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-white hover:text-foreground hover:shadow-sm"
+                  onClick={() => setLocale(lang.locale)}
+                  className={`rounded-md px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-white hover:text-foreground hover:shadow-sm ${locale === lang.locale ? 'bg-white text-foreground shadow-sm' : ''}`}
                   title={lang.label}
                 >
                   {lang.code}
@@ -87,7 +92,7 @@ export function Header() {
               ))}
             </div>
             <Button asChild size="lg" className="w-full rounded-lg font-semibold">
-              <Link href="/demo">Experimentar Demo</Link>
+              <Link href="/demo">{t.common.tryDemo}</Link>
             </Button>
           </div>
         )}

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Users, Wifi, Globe2, FileX2 } from "lucide-react";
+import { useTranslation } from "@/hooks/use-translation";
 
 interface StatItem {
   value: string;
@@ -12,41 +13,6 @@ interface StatItem {
   icon: React.ReactNode;
   color: string;
 }
-
-const stats: StatItem[] = [
-  {
-    value: "2.2",
-    suffix: "M",
-    label: "Populacao",
-    description: "Cidadaos que merecem servicos digitais acessiveis",
-    icon: <Users className="size-5" />,
-    color: "text-primary",
-  },
-  {
-    value: "32",
-    suffix: "%",
-    label: "Acesso Internet",
-    description: "Necessidade critica de solucoes offline-first e USSD",
-    icon: <Wifi className="size-5" />,
-    color: "text-gov-yellow",
-  },
-  {
-    value: "170",
-    suffix: "/193",
-    label: "Ranking UN E-Gov",
-    description: "Oportunidade imensa de transformacao digital",
-    icon: <Globe2 className="size-5" />,
-    color: "text-gov-red",
-  },
-  {
-    value: "~500",
-    suffix: "K",
-    label: "Sem Documento",
-    description: "Cidadaos sem identidade oficial reconhecida",
-    icon: <FileX2 className="size-5" />,
-    color: "text-muted-foreground",
-  },
-];
 
 function useInView(ref: React.RefObject<HTMLElement | null>) {
   const [inView, setInView] = useState(false);
@@ -126,6 +92,42 @@ function AnimatedValue({
 export function Stats() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef);
+  const { t } = useTranslation();
+
+  const stats: StatItem[] = [
+    {
+      value: "2.2",
+      suffix: "M",
+      label: t.landing.statsPopulation,
+      description: t.landing.statsPopulationDesc,
+      icon: <Users className="size-5" />,
+      color: "text-primary",
+    },
+    {
+      value: "32",
+      suffix: "%",
+      label: t.landing.statsInternet,
+      description: t.landing.statsInternetDesc,
+      icon: <Wifi className="size-5" />,
+      color: "text-gov-yellow",
+    },
+    {
+      value: "170",
+      suffix: "/193",
+      label: t.landing.statsUnRank,
+      description: t.landing.statsUnRankDesc,
+      icon: <Globe2 className="size-5" />,
+      color: "text-gov-red",
+    },
+    {
+      value: "~500",
+      suffix: "K",
+      label: t.landing.statsNoId,
+      description: t.landing.statsNoIdDesc,
+      icon: <FileX2 className="size-5" />,
+      color: "text-muted-foreground",
+    },
+  ];
 
   return (
     <section ref={sectionRef} className="relative py-20 sm:py-28">
@@ -133,14 +135,13 @@ export function Stats() {
         {/* Section header */}
         <div className="mb-12 text-center sm:mb-16">
           <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-            O contexto
+            {t.landing.statsContext}
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Numeros que exigem acao
+            {t.landing.statsHeading}
           </h2>
           <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground sm:text-base">
-            A Guine-Bissau enfrenta desafios unicos que exigem solucoes
-            inovadoras e adaptadas ao contexto local.
+            {t.landing.statsSubheading}
           </p>
         </div>
 

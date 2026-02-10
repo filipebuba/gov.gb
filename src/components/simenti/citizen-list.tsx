@@ -17,6 +17,7 @@ import { Search, MapPin, Users, Clock } from 'lucide-react';
 import type { Citizen, Region } from '@/types';
 import { REGIONS } from '@/types';
 import { IdCard } from './id-card';
+import { useTranslation } from '@/hooks/use-translation';
 
 const ALL_REGIONS = 'all';
 
@@ -49,6 +50,7 @@ interface CitizenListProps {
 export function CitizenList({ onSelectCitizen }: CitizenListProps = {}) {
   const citizens = useCitizenStore((s) => s.citizens);
   const pendingSync = useCitizenStore((s) => s.pendingSync);
+  const { t } = useTranslation();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [regionFilter, setRegionFilter] = useState<string>(ALL_REGIONS);
@@ -94,7 +96,7 @@ export function CitizenList({ onSelectCitizen }: CitizenListProps = {}) {
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
-            placeholder="Pesquisar por nome, ID, ou regiao..."
+            placeholder={t.simenti.searchPlaceholder}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-9"
@@ -102,10 +104,10 @@ export function CitizenList({ onSelectCitizen }: CitizenListProps = {}) {
         </div>
         <Select value={regionFilter} onValueChange={setRegionFilter}>
           <SelectTrigger className="w-full sm:w-48">
-            <SelectValue placeholder="Todas as regioes" />
+            <SelectValue placeholder={t.simenti.allRegions} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value={ALL_REGIONS}>Todas as regioes</SelectItem>
+            <SelectItem value={ALL_REGIONS}>{t.simenti.allRegions}</SelectItem>
             {REGIONS.map((r) => (
               <SelectItem key={r} value={r}>
                 <MapPin className="mr-1 h-3 w-3" />
@@ -120,7 +122,7 @@ export function CitizenList({ onSelectCitizen }: CitizenListProps = {}) {
       <div className="flex items-center gap-4 rounded-lg border bg-muted/50 px-4 py-2.5 text-sm">
         <div className="flex items-center gap-1.5">
           <Users className="h-4 w-4 text-muted-foreground" />
-          <span className="font-medium">Total: {filtered.length}</span>
+          <span className="font-medium">{t.simenti.total} {filtered.length}</span>
           {filtered.length !== citizens.length && (
             <span className="text-muted-foreground">/ {citizens.length}</span>
           )}
@@ -128,7 +130,7 @@ export function CitizenList({ onSelectCitizen }: CitizenListProps = {}) {
         {pendingCount > 0 && (
           <div className="flex items-center gap-1.5">
             <Clock className="h-4 w-4 text-amber-500" />
-            <span className="text-amber-700">Pendentes: {pendingCount}</span>
+            <span className="text-amber-700">{t.simenti.pendingCount} {pendingCount}</span>
           </div>
         )}
       </div>
@@ -140,13 +142,13 @@ export function CitizenList({ onSelectCitizen }: CitizenListProps = {}) {
             <Users className="h-12 w-12 text-muted-foreground/40" />
             <p className="mt-3 text-sm font-medium text-muted-foreground">
               {citizens.length === 0
-                ? 'Nenhum cidadao registado'
-                : 'Nenhum resultado encontrado'}
+                ? t.simenti.noCitizensRegistered
+                : t.simenti.noResultsFound}
             </p>
             <p className="mt-1 text-xs text-muted-foreground">
               {citizens.length === 0
-                ? 'Registe o primeiro cidadao para comecar.'
-                : 'Tente ajustar os filtros de pesquisa.'}
+                ? t.simenti.registerFirst
+                : t.simenti.adjustFilters}
             </p>
           </CardContent>
         </Card>
@@ -177,6 +179,8 @@ interface CitizenCardProps {
 }
 
 function CitizenCard({ citizen, isExpanded, isPending, onToggle }: CitizenCardProps) {
+  const { t } = useTranslation();
+
   return (
     <div className="overflow-hidden rounded-lg border bg-card transition-all">
       {/* Compact row */}
@@ -200,7 +204,7 @@ function CitizenCard({ citizen, isExpanded, isPending, onToggle }: CitizenCardPr
             <p className="truncate text-sm font-medium">{citizen.full_name}</p>
             {isPending && (
               <Badge variant="outline" className="shrink-0 border-amber-300 text-amber-600 text-[10px] px-1.5 py-0">
-                Pendente
+                {t.simenti.pendingBadge}
               </Badge>
             )}
           </div>
@@ -215,7 +219,7 @@ function CitizenCard({ citizen, isExpanded, isPending, onToggle }: CitizenCardPr
 
         {/* Registration date */}
         <div className="hidden shrink-0 text-right sm:block">
-          <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Registo</p>
+          <p className="text-[10px] uppercase tracking-wider text-muted-foreground">{t.simenti.registration}</p>
           <p className="text-xs text-muted-foreground">{formatDate(citizen.created_at)}</p>
         </div>
 

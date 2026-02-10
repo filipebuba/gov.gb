@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { Fingerprint, Smartphone, BarChart3, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useTranslation } from "@/hooks/use-translation";
 
 interface ModuleItem {
   icon: React.ReactNode;
@@ -13,66 +16,64 @@ interface ModuleItem {
   iconBg: string;
 }
 
-const modules: ModuleItem[] = [
-  {
-    icon: <Fingerprint className="size-6" />,
-    title: "Simenti ID",
-    badge: "Identidade",
-    description:
-      "Sistema biometrico de identidade digital que garante que cada cidadao guineense tem um documento oficial, seguro e verificavel.",
-    features: [
-      "Registo biometrico offline",
-      "QR code de verificacao",
-      "Compativel com padroes ICAO",
-    ],
-    gradient: "from-primary/10 to-primary/5",
-    iconBg: "bg-primary/10 text-primary",
-  },
-  {
-    icon: <Smartphone className="size-6" />,
-    title: "Acesso USSD",
-    badge: "Inclusao",
-    description:
-      "Servicos publicos acessiveis via qualquer telemovel basico com USSD (*123#). Sem internet, sem smartphone, sem exclusao.",
-    features: [
-      "Funciona sem internet",
-      "Qualquer telemovel basico",
-      "Interface em Kriol e Portugues",
-    ],
-    gradient: "from-gov-yellow/10 to-gov-yellow/5",
-    iconBg: "bg-gov-yellow/15 text-gov-yellow",
-  },
-  {
-    icon: <BarChart3 className="size-6" />,
-    title: "Dashboard",
-    badge: "Governacao",
-    description:
-      "Painel de controlo em tempo real para decisores politicos. Dados agregados, indicadores de desempenho e visualizacoes claras.",
-    features: [
-      "Metricas em tempo real",
-      "Exportacao de relatorios",
-      "Controlo de acesso por perfil",
-    ],
-    gradient: "from-gov-red/10 to-gov-red/5",
-    iconBg: "bg-gov-red/10 text-gov-red",
-  },
-];
-
 export function Modules() {
+  const { t } = useTranslation();
+
+  const modules: ModuleItem[] = [
+    {
+      icon: <Fingerprint className="size-6" />,
+      title: t.landing.simentiTitle,
+      badge: t.landing.identityBadge,
+      description: t.landing.simentiLongDesc,
+      features: [
+        t.landing.simentiFeature1,
+        t.landing.simentiFeature2,
+        t.landing.simentiFeature3,
+      ],
+      gradient: "from-primary/10 to-primary/5",
+      iconBg: "bg-primary/10 text-primary",
+    },
+    {
+      icon: <Smartphone className="size-6" />,
+      title: t.landing.ussdTitle,
+      badge: t.landing.inclusionBadge,
+      description: t.landing.ussdLongDesc,
+      features: [
+        t.landing.ussdFeature1,
+        t.landing.ussdFeature2,
+        t.landing.ussdFeature3,
+      ],
+      gradient: "from-gov-yellow/10 to-gov-yellow/5",
+      iconBg: "bg-gov-yellow/15 text-gov-yellow",
+    },
+    {
+      icon: <BarChart3 className="size-6" />,
+      title: t.landing.dashboardTitle,
+      badge: t.landing.governanceBadge,
+      description: t.landing.dashboardLongDesc,
+      features: [
+        t.landing.dashboardFeature1,
+        t.landing.dashboardFeature2,
+        t.landing.dashboardFeature3,
+      ],
+      gradient: "from-gov-red/10 to-gov-red/5",
+      iconBg: "bg-gov-red/10 text-gov-red",
+    },
+  ];
+
   return (
     <section className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-12 text-center sm:mb-16">
           <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-            Modulos da plataforma
+            {t.landing.modulesTitle}
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Tres pilares, um sistema
+            {t.landing.modulesSubtitle}
           </h2>
           <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground sm:text-base">
-            Cada modulo resolve um desafio concreto, e juntos formam a
-            infraestrutura digital publica da Guine-Bissau.
+            {t.landing.modulesDescription}
           </p>
         </div>
 
@@ -131,7 +132,7 @@ export function Modules() {
                   href="/demo"
                   className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
                 >
-                  Experimentar
+                  {t.common.explore}
                   <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </CardContent>

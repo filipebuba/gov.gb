@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useTranslation } from '@/hooks/use-translation';
 
 interface TopServicesProps {
   data: { name: string; count: number }[];
@@ -19,6 +20,8 @@ const BAR_COLORS = [
 ];
 
 export function TopServices({ data }: TopServicesProps) {
+  const { t } = useTranslation();
+
   const sorted = useMemo(
     () => [...data].sort((a, b) => b.count - a.count),
     [data]
@@ -32,7 +35,7 @@ export function TopServices({ data }: TopServicesProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-base">Servicos Mais Solicitados</CardTitle>
+        <CardTitle className="text-base">{t.dashboard.topServices}</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-4">
@@ -71,7 +74,7 @@ export function TopServices({ data }: TopServicesProps) {
 
           {sorted.length === 0 && (
             <p className="py-8 text-center text-sm text-muted-foreground">
-              Sem dados disponiveis
+              {t.dashboard.noDataAvailable}
             </p>
           )}
         </div>

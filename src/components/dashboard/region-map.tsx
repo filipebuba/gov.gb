@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useTranslation } from '@/hooks/use-translation';
 
 interface RegionMapProps {
   data: { region: string; count: number }[];
@@ -95,6 +96,7 @@ function getRegionTextColor(ratio: number): string {
 const LEGEND_STEPS = 5;
 
 export function RegionMap({ data }: RegionMapProps) {
+  const { t } = useTranslation();
   const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
 
   const maxCount = useMemo(
@@ -117,7 +119,7 @@ export function RegionMap({ data }: RegionMapProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-base">Cobertura por Regiao</CardTitle>
+        <CardTitle className="text-base">{t.dashboard.regionMap}</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-6">
@@ -127,7 +129,7 @@ export function RegionMap({ data }: RegionMapProps) {
               viewBox="0 0 390 200"
               className="w-full"
               role="img"
-              aria-label="Mapa simplificado da Guine-Bissau mostrando cobertura por regiao"
+              aria-label={t.dashboard.mapAria}
             >
               {/* Water background */}
               <rect
@@ -183,13 +185,12 @@ export function RegionMap({ data }: RegionMapProps) {
                   {hoveredRegion}
                 </span>
                 {' -- '}
-                {getCount(hoveredRegion).toLocaleString('pt-GW')} cidadaos
-                registados
+                {getCount(hoveredRegion).toLocaleString('pt-GW')} {t.dashboard.registeredCitizens}
               </div>
             )}
             {!hoveredRegion && (
               <div className="mt-2 text-center text-sm text-muted-foreground">
-                Passe o rato sobre uma regiao para ver detalhes
+                {t.dashboard.hoverRegion}
               </div>
             )}
           </div>
@@ -197,7 +198,7 @@ export function RegionMap({ data }: RegionMapProps) {
           {/* Legend */}
           <div className="flex flex-row items-center gap-3 lg:flex-col lg:items-start lg:gap-1.5 lg:pt-2">
             <p className="text-xs font-medium text-muted-foreground">
-              Cidadaos
+              {t.dashboard.citizensLabel}
             </p>
             <div className="flex items-center gap-1.5 lg:flex-col lg:items-start">
               {Array.from({ length: LEGEND_STEPS }).map((_, i) => {

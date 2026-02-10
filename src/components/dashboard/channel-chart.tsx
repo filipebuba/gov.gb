@@ -10,6 +10,7 @@ import {
   Cell,
 } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useTranslation } from '@/hooks/use-translation';
 
 interface ChannelChartProps {
   data: { channel: string; count: number }[];
@@ -25,35 +26,37 @@ const CHANNEL_COLORS: Record<string, string> = {
 
 const FALLBACK_COLOR = '#6b7280';
 
-function CustomTooltip({
-  active,
-  payload,
-  label,
-}: {
-  active?: boolean;
-  payload?: { value: number; payload: { channel: string } }[];
-  label?: string;
-}) {
-  if (!active || !payload?.length) return null;
-
-  return (
-    <div className="rounded-lg border bg-card px-3 py-2 shadow-md">
-      <p className="text-xs font-medium text-muted-foreground">{label}</p>
-      <p className="text-sm font-bold text-foreground">
-        {payload[0].value} pedidos
-      </p>
-    </div>
-  );
-}
-
 export function ChannelChart({ data }: ChannelChartProps) {
+  const { t } = useTranslation();
+
+  function CustomTooltip({
+    active,
+    payload,
+    label,
+  }: {
+    active?: boolean;
+    payload?: { value: number; payload: { channel: string } }[];
+    label?: string;
+  }) {
+    if (!active || !payload?.length) return null;
+
+    return (
+      <div className="rounded-lg border bg-card px-3 py-2 shadow-md">
+        <p className="text-xs font-medium text-muted-foreground">{label}</p>
+        <p className="text-sm font-bold text-foreground">
+          {payload[0].value} {t.dashboard.requests}
+        </p>
+      </div>
+    );
+  }
+
   // Sort by count descending for the horizontal bar chart
   const sorted = [...data].sort((a, b) => b.count - a.count);
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-base">Pedidos por Canal</CardTitle>
+        <CardTitle className="text-base">{t.dashboard.channelChart}</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="h-[260px] w-full">

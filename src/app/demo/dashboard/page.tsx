@@ -6,18 +6,21 @@ import { RegistrationChart } from '@/components/dashboard/registration-chart';
 import { RegionMap } from '@/components/dashboard/region-map';
 import { ChannelChart } from '@/components/dashboard/channel-chart';
 import { TopServices } from '@/components/dashboard/top-services';
+import { useTranslation } from '@/hooks/use-translation';
 
 const stats = getDemoStats();
 
 export default function DashboardDemoPage() {
+  const { t } = useTranslation();
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
       <div className="mb-6">
         <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
-          Painel de Controlo
+          {t.dashboard.title}
         </h1>
         <p className="text-muted-foreground mt-1">
-          Monitorização em tempo real. Dados de demonstração.
+          {t.dashboard.demoSubtitle}
         </p>
       </div>
 

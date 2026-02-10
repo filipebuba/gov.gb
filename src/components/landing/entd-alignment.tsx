@@ -1,3 +1,5 @@
+"use client";
+
 import {
   CheckCircle2,
   Monitor,
@@ -5,6 +7,7 @@ import {
   Users,
   Radio,
 } from "lucide-react";
+import { useTranslation } from "@/hooks/use-translation";
 
 interface Axis {
   icon: React.ReactNode;
@@ -13,50 +16,52 @@ interface Axis {
   items: string[];
 }
 
-const axes: Axis[] = [
-  {
-    icon: <Monitor className="size-5" />,
-    title: "Governacao Digital",
-    description: "Modernizacao dos servicos publicos e processos administrativos",
-    items: [
-      "Identidade digital universal",
-      "Servicos publicos digitais",
-      "Interoperabilidade de sistemas",
-    ],
-  },
-  {
-    icon: <TrendingUp className="size-5" />,
-    title: "Economia Digital",
-    description: "Criacao de um ecossistema digital para o desenvolvimento economico",
-    items: [
-      "Pagamentos digitais",
-      "Registo de empresas online",
-      "Mercado digital nacional",
-    ],
-  },
-  {
-    icon: <Users className="size-5" />,
-    title: "Inclusao Digital",
-    description: "Garantir que nenhum cidadao e deixado para tras na transicao digital",
-    items: [
-      "Acesso USSD para todos",
-      "Interface em Kriol",
-      "Solucoes offline-first",
-    ],
-  },
-  {
-    icon: <Radio className="size-5" />,
-    title: "Infraestrutura",
-    description: "Construcao da base tecnologica necessaria para a transformacao",
-    items: [
-      "Datacenter governamental",
-      "Rede de conectividade",
-      "Cloud soberana",
-    ],
-  },
-];
-
 export function EntdAlignment() {
+  const { t } = useTranslation();
+
+  const axes: Axis[] = [
+    {
+      icon: <Monitor className="size-5" />,
+      title: t.landing.axis1,
+      description: t.landing.axis1Desc,
+      items: [
+        t.landing.axis1Item1,
+        t.landing.axis1Item2,
+        t.landing.axis1Item3,
+      ],
+    },
+    {
+      icon: <TrendingUp className="size-5" />,
+      title: t.landing.axis2,
+      description: t.landing.axis2Desc,
+      items: [
+        t.landing.axis2Item1,
+        t.landing.axis2Item2,
+        t.landing.axis2Item3,
+      ],
+    },
+    {
+      icon: <Users className="size-5" />,
+      title: t.landing.axis3,
+      description: t.landing.axis3Desc,
+      items: [
+        t.landing.axis3Item1,
+        t.landing.axis3Item2,
+        t.landing.axis3Item3,
+      ],
+    },
+    {
+      icon: <Radio className="size-5" />,
+      title: t.landing.axis4,
+      description: t.landing.axis4Desc,
+      items: [
+        t.landing.axis4Item1,
+        t.landing.axis4Item2,
+        t.landing.axis4Item3,
+      ],
+    },
+  ];
+
   return (
     <section className="relative py-20 sm:py-28">
       {/* Background */}
@@ -66,15 +71,13 @@ export function EntdAlignment() {
         {/* Section header */}
         <div className="mb-14 text-center sm:mb-20">
           <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-            Alinhamento estrategico
+            {t.landing.alignmentBadge}
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Construido sobre a ENTD.GW
+            {t.landing.alignmentSubtitle}
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
-            Cada funcionalidade do GOV-GB esta directamente alinhada com os
-            quatro eixos da Estrategia Nacional de Transicao Digital da
-            Guine-Bissau (2025-2030).
+            {t.landing.alignmentDescription}
           </p>
         </div>
 
@@ -118,7 +121,7 @@ export function EntdAlignment() {
         <div className="mt-12 flex items-center justify-center sm:mt-16">
           <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card px-5 py-2.5 text-xs font-medium text-muted-foreground shadow-sm sm:text-sm">
             <span className="flex size-2 rounded-full bg-primary animate-pulse" />
-            Documento de referencia: ENTD.GW 2025-2030 (Governo da Guine-Bissau)
+            {t.landing.referenceDoc}
           </div>
         </div>
       </div>

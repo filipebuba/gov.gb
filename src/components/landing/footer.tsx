@@ -1,9 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Github, Heart, ExternalLink } from "lucide-react";
+import { useTranslation } from "@/hooks/use-translation";
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const { t } = useTranslation();
 
   return (
     <footer className="relative border-t border-border/60">
@@ -25,14 +29,14 @@ export function Footer() {
           </div>
 
           <p className="mx-auto max-w-md text-base font-medium leading-relaxed text-foreground sm:text-lg">
-            Construido com proposito.{" "}
+            {t.landing.footerBuiltWith}{" "}
             <span className="text-primary">Open-source.</span>
             <br />
-            Para a Guine-Bissau.
+            {t.landing.footerForGb}
           </p>
 
           <p className="mx-auto mt-3 max-w-md text-sm text-muted-foreground">
-            Alinhado com{" "}
+            {t.landing.footerAlignedWith}{" "}
             <span className="font-medium text-foreground/70">UNDP</span>,{" "}
             <span className="font-medium text-foreground/70">World Bank</span>,
             e{" "}
@@ -46,7 +50,7 @@ export function Footer() {
             href="/demo"
             className="inline-flex items-center gap-1.5 rounded-lg bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/20"
           >
-            Experimentar Demo
+            {t.common.tryDemo}
             <ExternalLink className="size-3.5" />
           </Link>
 
@@ -67,12 +71,12 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-6 flex flex-col items-center gap-2 text-center">
           <p className="flex items-center gap-1 text-xs text-muted-foreground">
-            Feito com
+            {t.landing.footerMadeWith}
             <Heart className="size-3 fill-gov-red text-gov-red" />
-            para a Guine-Bissau
+            {t.landing.footerForGb2}
           </p>
           <p className="text-xs text-muted-foreground/60">
-            &copy; {year} GOV-GB. Codigo aberto sob licenca MIT.
+            &copy; {year} GOV-GB. {t.landing.footerLicense}
           </p>
         </div>
       </div>

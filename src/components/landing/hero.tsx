@@ -1,9 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Play, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useTranslation } from "@/hooks/use-translation";
 
 export function Hero() {
+  const { t } = useTranslation();
+
   return (
     <section className="hero-gradient relative min-h-screen overflow-hidden">
       {/* Background pattern */}
@@ -34,32 +39,22 @@ export function Hero() {
           className="mb-6 border-white/20 bg-white/10 px-4 py-1.5 text-xs font-medium text-white/90 backdrop-blur-sm sm:mb-8"
         >
           <span className="mr-1.5 inline-block size-1.5 rounded-full bg-gov-green-light animate-pulse" />
-          Alinhado com a ENTD.GW 2025-2030
+          {t.landing.heroBadge}
         </Badge>
 
         {/* Main heading */}
         <h1 className="mx-auto max-w-4xl text-center text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-          Guine-Bissau merece{" "}
-          <span className="relative">
-            <span className="relative z-10">um governo digital.</span>
-            <span
-              className="absolute -bottom-1 left-0 right-0 z-0 h-3 bg-gov-yellow/25 sm:-bottom-2 sm:h-4"
-              aria-hidden="true"
-            />
-          </span>
+          {t.landing.heroTitle}
         </h1>
 
         {/* Subtitle */}
         <p className="mx-auto mt-5 max-w-2xl text-center text-lg font-medium leading-relaxed text-white/80 sm:mt-6 sm:text-xl md:text-2xl">
-          Ja temos a estrategia.{" "}
-          <span className="text-gov-yellow">Agora precisamos de quem a construa.</span>
+          {t.landing.heroSubtitle}
         </p>
 
         {/* Description */}
         <p className="mx-auto mt-4 max-w-xl text-center text-sm leading-relaxed text-white/55 sm:text-base">
-          Plataforma open-source para implementar a Estrategia Nacional de
-          Transicao Digital da Guine-Bissau. Identidade digital, servicos
-          publicos e inclusao para 2.2 milhoes de guineenses.
+          {t.landing.heroDescription}
         </p>
 
         {/* CTAs */}
@@ -70,7 +65,7 @@ export function Hero() {
             className="h-12 rounded-xl bg-white px-8 text-base font-semibold text-primary shadow-lg shadow-black/20 transition-all hover:bg-white/90 hover:shadow-xl sm:h-14 sm:px-10 sm:text-lg"
           >
             <Link href="/demo">
-              Experimentar Demo
+              {t.landing.ctaDemo}
               <ArrowRight className="ml-1 size-4 sm:size-5" />
             </Link>
           </Button>
@@ -82,7 +77,7 @@ export function Hero() {
           >
             <Link href="#problem-solution">
               <Play className="mr-1 size-4" />
-              Saber Mais
+              {t.landing.ctaLearnMore}
             </Link>
           </Button>
         </div>

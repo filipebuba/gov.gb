@@ -14,77 +14,76 @@ import {
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-
-const modules = [
-  {
-    href: '/demo/simenti',
-    icon: Fingerprint,
-    title: 'Simenti ID',
-    description:
-      'Registar cidadãos, gerar identidade digital com QR code. Funciona offline.',
-    badge: 'Identidade',
-    color: 'text-emerald-600',
-    bgColor: 'bg-emerald-50',
-  },
-  {
-    href: '/demo/ussd',
-    icon: Smartphone,
-    title: 'Simulador USSD *244#',
-    description:
-      'Interaja com serviços governamentais num telemóvel Nokia virtual. Sem internet.',
-    badge: 'Inclusão',
-    color: 'text-amber-600',
-    bgColor: 'bg-amber-50',
-  },
-  {
-    href: '/demo/dashboard',
-    icon: BarChart3,
-    title: 'Dashboard Admin',
-    description:
-      'Painel de controlo com métricas em tempo real, mapa de cobertura, e auditoria.',
-    badge: 'Governação',
-    color: 'text-blue-600',
-    bgColor: 'bg-blue-50',
-  },
-];
-
-const features = [
-  {
-    icon: WifiOff,
-    title: 'Offline-First',
-    desc: 'Funciona sem internet. Sincroniza quando há rede.',
-  },
-  {
-    icon: Shield,
-    title: 'Seguro',
-    desc: 'Row Level Security. Dados encriptados. Audit log.',
-  },
-  {
-    icon: Globe,
-    title: 'Multilíngue',
-    desc: 'Português, Kriol, English, Français.',
-  },
-  {
-    icon: Zap,
-    title: 'Rápido',
-    desc: 'Carrega em <2 segundos. Optimizado para 3G.',
-  },
-];
+import { useTranslation } from '@/hooks/use-translation';
 
 export default function DemoPage() {
+  const { t } = useTranslation();
+
+  const modules = [
+    {
+      href: '/demo/simenti',
+      icon: Fingerprint,
+      title: 'Simenti ID',
+      description: t.demo.simentiModuleDesc,
+      badge: t.demo.identityBadge,
+      color: 'text-emerald-600',
+      bgColor: 'bg-emerald-50',
+    },
+    {
+      href: '/demo/ussd',
+      icon: Smartphone,
+      title: t.demo.ussdModuleTitle,
+      description: t.demo.ussdModuleDesc,
+      badge: t.demo.inclusionBadge,
+      color: 'text-amber-600',
+      bgColor: 'bg-amber-50',
+    },
+    {
+      href: '/demo/dashboard',
+      icon: BarChart3,
+      title: t.demo.dashboardModuleTitle,
+      description: t.demo.dashboardModuleDesc,
+      badge: t.demo.governanceBadge,
+      color: 'text-blue-600',
+      bgColor: 'bg-blue-50',
+    },
+  ];
+
+  const features = [
+    {
+      icon: WifiOff,
+      title: t.demo.offlineFirst,
+      desc: t.demo.offlineFirstDesc,
+    },
+    {
+      icon: Shield,
+      title: t.demo.secure,
+      desc: t.demo.secureDesc,
+    },
+    {
+      icon: Globe,
+      title: t.demo.multilingual,
+      desc: t.demo.multilingualDesc,
+    },
+    {
+      icon: Zap,
+      title: t.demo.fast,
+      desc: t.demo.fastDesc,
+    },
+  ];
+
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 sm:py-12">
       {/* Header */}
       <div className="mb-8 text-center">
         <Badge className="mb-4" variant="secondary">
-          Modo Demonstração
+          {t.demo.modeBadge}
         </Badge>
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Explorar o GOV-GB
+          {t.demo.exploreTitle}
         </h1>
         <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
-          Dados fictícios pré-carregados. Nenhuma conta necessária. Explore cada
-          módulo da plataforma de governo digital da Guiné-Bissau.
+          {t.demo.exploreDesc}
         </p>
       </div>
 
@@ -113,7 +112,7 @@ export default function DemoPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center text-sm font-medium text-primary group-hover:gap-2 transition-all">
-                    Explorar
+                    {t.common.explore}
                     <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </div>
                 </CardContent>
@@ -126,7 +125,7 @@ export default function DemoPage() {
       {/* Features Grid */}
       <div className="mb-12">
         <h2 className="text-lg font-semibold text-center mb-6">
-          Características Técnicas
+          {t.demo.techFeatures}
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {features.map((feat) => {
@@ -151,15 +150,14 @@ export default function DemoPage() {
       <Card className="bg-primary/5 border-primary/20">
         <CardContent className="flex flex-col sm:flex-row items-center justify-between gap-4 py-6">
           <div>
-            <h3 className="font-semibold">Fluxo de Demo Recomendado</h3>
+            <h3 className="font-semibold">{t.demo.recommendedFlow}</h3>
             <p className="text-sm text-muted-foreground mt-1">
-              1. Registar um cidadão no Simenti ID → 2. Consultar via USSD →
-              3. Ver métricas no Dashboard
+              {t.demo.flowDescription}
             </p>
           </div>
           <Link href="/demo/simenti">
             <Button className="gap-2 whitespace-nowrap">
-              Começar pelo Simenti ID
+              {t.demo.startSimenti}
               <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>

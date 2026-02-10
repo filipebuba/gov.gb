@@ -16,18 +16,20 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useCitizenStore } from '@/stores/citizen-store';
 import { useEffect, useState } from 'react';
-
-const navItems = [
-  { href: '/demo', label: 'Início', icon: Home },
-  { href: '/demo/simenti', label: 'Simenti ID', icon: Fingerprint },
-  { href: '/demo/ussd', label: 'USSD *244#', icon: Smartphone },
-  { href: '/demo/dashboard', label: 'Dashboard', icon: BarChart3 },
-];
+import { useTranslation } from '@/hooks/use-translation';
 
 export function DemoNav() {
   const pathname = usePathname();
   const { isOffline, setOffline, pendingSync, syncPending } = useCitizenStore();
   const [mounted, setMounted] = useState(false);
+  const { t } = useTranslation();
+
+  const navItems = [
+    { href: '/demo', label: t.common.home, icon: Home },
+    { href: '/demo/simenti', label: 'Simenti ID', icon: Fingerprint },
+    { href: '/demo/ussd', label: 'USSD *244#', icon: Smartphone },
+    { href: '/demo/dashboard', label: t.common.dashboard, icon: BarChart3 },
+  ];
 
   useEffect(() => {
     setMounted(true);
@@ -87,7 +89,7 @@ export function DemoNav() {
           <div className="flex items-center gap-2">
             {mounted && pendingSync.length > 0 && (
               <Badge variant="secondary" className="text-xs">
-                {pendingSync.length} pendente{pendingSync.length > 1 ? 's' : ''}
+                {pendingSync.length} {t.common.pending}{pendingSync.length > 1 ? 's' : ''}
               </Badge>
             )}
 
@@ -103,12 +105,12 @@ export function DemoNav() {
               {isOffline ? (
                 <>
                   <WifiOff className="h-3.5 w-3.5" />
-                  <span className="hidden sm:inline">Offline</span>
+                  <span className="hidden sm:inline">{t.common.offline}</span>
                 </>
               ) : (
                 <>
                   <Wifi className="h-3.5 w-3.5" />
-                  <span className="hidden sm:inline">Online</span>
+                  <span className="hidden sm:inline">{t.common.online}</span>
                 </>
               )}
             </Button>
