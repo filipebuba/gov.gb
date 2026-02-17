@@ -70,7 +70,7 @@ export function CitizenList({ onSelectCitizen }: CitizenListProps = {}) {
       result = result.filter(
         (c) =>
           c.full_name.toLowerCase().includes(q) ||
-          c.simenti_id.toLowerCase().includes(q) ||
+          c.código_id.toLowerCase().includes(q) ||
           c.region.toLowerCase().includes(q) ||
           (c.tabanca && c.tabanca.toLowerCase().includes(q))
       );
@@ -96,7 +96,7 @@ export function CitizenList({ onSelectCitizen }: CitizenListProps = {}) {
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
-            placeholder={t.simenti.searchPlaceholder}
+            placeholder={t.código.searchPlaceholder}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-9"
@@ -104,10 +104,10 @@ export function CitizenList({ onSelectCitizen }: CitizenListProps = {}) {
         </div>
         <Select value={regionFilter} onValueChange={setRegionFilter}>
           <SelectTrigger className="w-full sm:w-48">
-            <SelectValue placeholder={t.simenti.allRegions} />
+            <SelectValue placeholder={t.código.allRegions} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value={ALL_REGIONS}>{t.simenti.allRegions}</SelectItem>
+            <SelectItem value={ALL_REGIONS}>{t.código.allRegions}</SelectItem>
             {REGIONS.map((r) => (
               <SelectItem key={r} value={r}>
                 <MapPin className="mr-1 h-3 w-3" />
@@ -122,7 +122,7 @@ export function CitizenList({ onSelectCitizen }: CitizenListProps = {}) {
       <div className="flex items-center gap-4 rounded-lg border bg-muted/50 px-4 py-2.5 text-sm">
         <div className="flex items-center gap-1.5">
           <Users className="h-4 w-4 text-muted-foreground" />
-          <span className="font-medium">{t.simenti.total} {filtered.length}</span>
+          <span className="font-medium">{t.código.total} {filtered.length}</span>
           {filtered.length !== citizens.length && (
             <span className="text-muted-foreground">/ {citizens.length}</span>
           )}
@@ -130,7 +130,7 @@ export function CitizenList({ onSelectCitizen }: CitizenListProps = {}) {
         {pendingCount > 0 && (
           <div className="flex items-center gap-1.5">
             <Clock className="h-4 w-4 text-amber-500" />
-            <span className="text-amber-700">{t.simenti.pendingCount} {pendingCount}</span>
+            <span className="text-amber-700">{t.código.pendingCount} {pendingCount}</span>
           </div>
         )}
       </div>
@@ -142,13 +142,13 @@ export function CitizenList({ onSelectCitizen }: CitizenListProps = {}) {
             <Users className="h-12 w-12 text-muted-foreground/40" />
             <p className="mt-3 text-sm font-medium text-muted-foreground">
               {citizens.length === 0
-                ? t.simenti.noCitizensRegistered
-                : t.simenti.noResultsFound}
+                ? t.código.noCitizensRegistered
+                : t.código.noResultsFound}
             </p>
             <p className="mt-1 text-xs text-muted-foreground">
               {citizens.length === 0
-                ? t.simenti.registerFirst
-                : t.simenti.adjustFilters}
+                ? t.código.registerFirst
+                : t.código.adjustFilters}
             </p>
           </CardContent>
         </Card>
@@ -204,12 +204,12 @@ function CitizenCard({ citizen, isExpanded, isPending, onToggle }: CitizenCardPr
             <p className="truncate text-sm font-medium">{citizen.full_name}</p>
             {isPending && (
               <Badge variant="outline" className="shrink-0 border-amber-300 text-amber-600 text-[10px] px-1.5 py-0">
-                {t.simenti.pendingBadge}
+                {t.código.pendingBadge}
               </Badge>
             )}
           </div>
           <div className="flex items-center gap-3 text-xs text-muted-foreground">
-            <span className="font-mono">{citizen.simenti_id}</span>
+            <span className="font-mono">{citizen.código_id}</span>
             <span className="flex items-center gap-1">
               <MapPin className="h-3 w-3" />
               {citizen.region}
@@ -219,7 +219,7 @@ function CitizenCard({ citizen, isExpanded, isPending, onToggle }: CitizenCardPr
 
         {/* Registration date */}
         <div className="hidden shrink-0 text-right sm:block">
-          <p className="text-[10px] uppercase tracking-wider text-muted-foreground">{t.simenti.registration}</p>
+          <p className="text-[10px] uppercase tracking-wider text-muted-foreground">{t.código.registration}</p>
           <p className="text-xs text-muted-foreground">{formatDate(citizen.created_at)}</p>
         </div>
 

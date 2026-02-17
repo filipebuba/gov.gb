@@ -39,21 +39,21 @@ export function RegistrationForm({ onSuccess }: RegistrationFormProps) {
     const newErrors: Record<string, string> = {};
 
     if (!fullName.trim()) {
-      newErrors.fullName = t.simenti.nameRequired;
+      newErrors.fullName = t.código.nameRequired;
     } else if (fullName.trim().length < 3) {
-      newErrors.fullName = t.simenti.nameMinLength;
+      newErrors.fullName = t.código.nameMinLength;
     }
 
     if (!gender) {
-      newErrors.gender = t.simenti.selectGender;
+      newErrors.gender = t.código.selectGender;
     }
 
     if (!region) {
-      newErrors.region = t.simenti.selectRegionError;
+      newErrors.region = t.código.selectRegionError;
     }
 
     if (phone && !/^\d{7}$/.test(phone.replace(/\s/g, ''))) {
-      newErrors.phone = t.simenti.phoneDigits;
+      newErrors.phone = t.código.phoneDigits;
     }
 
     setErrors(newErrors);
@@ -102,36 +102,36 @@ export function RegistrationForm({ onSuccess }: RegistrationFormProps) {
           </div>
           <div className="text-center">
             <h3 className="text-xl font-semibold text-green-800">
-              {t.simenti.registrationSuccess}
+              {t.código.registrationSuccess}
             </h3>
             <p className="mt-2 text-sm text-muted-foreground">
-              {t.simenti.citizenRegistered}
+              {t.código.citizenRegistered}
             </p>
           </div>
           <div className="w-full rounded-lg border border-green-200 bg-green-50 p-4">
             <div className="text-center">
-              <p className="text-xs uppercase tracking-wider text-green-600">Simenti ID</p>
+              <p className="text-xs uppercase tracking-wider text-green-600">código ID</p>
               <p className="mt-1 font-mono text-2xl font-bold text-green-900">
-                {submittedCitizen.simenti_id}
+                {submittedCitizen.código_id}
               </p>
             </div>
             <div className="mt-3 grid grid-cols-2 gap-2 text-sm">
               <div>
-                <span className="text-muted-foreground">{t.simenti.nameLabel}</span>
+                <span className="text-muted-foreground">{t.código.nameLabel}</span>
                 <p className="font-medium">{submittedCitizen.full_name}</p>
               </div>
               <div>
-                <span className="text-muted-foreground">{t.simenti.regionLabel}</span>
+                <span className="text-muted-foreground">{t.código.regionLabel}</span>
                 <p className="font-medium">{submittedCitizen.region}</p>
               </div>
             </div>
           </div>
           <div className="flex gap-3">
             <Button variant="outline" onClick={handleReset}>
-              {t.simenti.newRegistration}
+              {t.código.newRegistration}
             </Button>
             <Button onClick={() => onSuccess?.(submittedCitizen)}>
-              {t.simenti.viewIdCard}
+              {t.código.viewIdCard}
             </Button>
           </div>
         </CardContent>
@@ -144,10 +144,10 @@ export function RegistrationForm({ onSuccess }: RegistrationFormProps) {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <User className="h-5 w-5" />
-          {t.simenti.registrationTitle}
+          {t.código.registrationTitle}
         </CardTitle>
         <CardDescription>
-          {t.simenti.registrationDesc}
+          {t.código.registrationDesc}
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -155,13 +155,13 @@ export function RegistrationForm({ onSuccess }: RegistrationFormProps) {
           {/* Nome Completo */}
           <div className="space-y-2">
             <Label htmlFor="fullName">
-              {t.simenti.fullName} <span className="text-destructive">*</span>
+              {t.código.fullName} <span className="text-destructive">*</span>
             </Label>
             <div className="relative">
               <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 id="fullName"
-                placeholder={t.simenti.namePlaceholder}
+                placeholder={t.código.namePlaceholder}
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 className="pl-9"
@@ -175,7 +175,7 @@ export function RegistrationForm({ onSuccess }: RegistrationFormProps) {
 
           {/* Data de Nascimento */}
           <div className="space-y-2">
-            <Label htmlFor="birthDate">{t.simenti.birthDate}</Label>
+            <Label htmlFor="birthDate">{t.código.birthDate}</Label>
             <div className="relative">
               <Calendar className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
@@ -194,19 +194,19 @@ export function RegistrationForm({ onSuccess }: RegistrationFormProps) {
             {/* Genero */}
             <div className="space-y-2">
               <Label>
-                {t.simenti.gender} <span className="text-destructive">*</span>
+                {t.código.gender} <span className="text-destructive">*</span>
               </Label>
               <Select
                 value={gender}
                 onValueChange={(v) => setGender(v as Gender)}
               >
                 <SelectTrigger className="w-full" aria-invalid={!!errors.gender}>
-                  <SelectValue placeholder={t.simenti.select} />
+                  <SelectValue placeholder={t.código.select} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="M">{t.simenti.male}</SelectItem>
-                  <SelectItem value="F">{t.simenti.female}</SelectItem>
-                  <SelectItem value="O">{t.simenti.other}</SelectItem>
+                  <SelectItem value="M">{t.código.male}</SelectItem>
+                  <SelectItem value="F">{t.código.female}</SelectItem>
+                  <SelectItem value="O">{t.código.other}</SelectItem>
                 </SelectContent>
               </Select>
               {errors.gender && (
@@ -217,14 +217,14 @@ export function RegistrationForm({ onSuccess }: RegistrationFormProps) {
             {/* Regiao */}
             <div className="space-y-2">
               <Label>
-                {t.simenti.region} <span className="text-destructive">*</span>
+                {t.código.region} <span className="text-destructive">*</span>
               </Label>
               <Select
                 value={region}
                 onValueChange={(v) => setRegion(v as Region)}
               >
                 <SelectTrigger className="w-full" aria-invalid={!!errors.region}>
-                  <SelectValue placeholder={t.simenti.selectRegionPlaceholder} />
+                  <SelectValue placeholder={t.código.selectRegionPlaceholder} />
                 </SelectTrigger>
                 <SelectContent>
                   {REGIONS.map((r) => (
@@ -243,12 +243,12 @@ export function RegistrationForm({ onSuccess }: RegistrationFormProps) {
 
           {/* Tabanca / Comunidade */}
           <div className="space-y-2">
-            <Label htmlFor="tabanca">{t.simenti.tabanca}</Label>
+            <Label htmlFor="tabanca">{t.código.tabanca}</Label>
             <div className="relative">
               <MapPin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 id="tabanca"
-                placeholder={t.simenti.tabancaPlaceholder}
+                placeholder={t.código.tabancaPlaceholder}
                 value={tabanca}
                 onChange={(e) => setTabanca(e.target.value)}
                 className="pl-9"
@@ -258,7 +258,7 @@ export function RegistrationForm({ onSuccess }: RegistrationFormProps) {
 
           {/* Telefone */}
           <div className="space-y-2">
-            <Label htmlFor="phone">{t.simenti.phone}</Label>
+            <Label htmlFor="phone">{t.código.phone}</Label>
             <div className="relative">
               <Phone className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <span className="absolute left-9 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">
@@ -282,14 +282,14 @@ export function RegistrationForm({ onSuccess }: RegistrationFormProps) {
 
           {/* Foto placeholder */}
           <div className="space-y-2">
-            <Label>{t.simenti.photo}</Label>
+            <Label>{t.código.photo}</Label>
             <div className="flex items-center gap-4">
               <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/30 bg-muted/50">
                 <Camera className="h-8 w-8 text-muted-foreground/50" />
               </div>
               <div className="text-sm text-muted-foreground">
-                <p>{t.simenti.citizenPhoto}</p>
-                <p className="mt-1 text-xs">{t.simenti.photoComingSoon}</p>
+                <p>{t.código.citizenPhoto}</p>
+                <p className="mt-1 text-xs">{t.código.photoComingSoon}</p>
               </div>
             </div>
           </div>
@@ -297,7 +297,7 @@ export function RegistrationForm({ onSuccess }: RegistrationFormProps) {
           {/* Submit */}
           <Button type="submit" className="w-full" size="lg">
             <Check className="mr-2 h-4 w-4" />
-            {t.simenti.registerCitizen}
+            {t.código.registerCitizen}
           </Button>
         </form>
       </CardContent>

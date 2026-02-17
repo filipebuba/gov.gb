@@ -2,14 +2,14 @@
 
 import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { RegistrationForm } from '@/components/simenti/registration-form';
-import { IdCard } from '@/components/simenti/id-card';
-import { CitizenList } from '@/components/simenti/citizen-list';
+import { RegistrationForm } from '@/components/código/registration-form';
+import { IdCard } from '@/components/código/id-card';
+import { CitizenList } from '@/components/código/citizen-list';
 import type { Citizen } from '@/types';
 import { UserPlus, Users, CreditCard } from 'lucide-react';
 import { useTranslation } from '@/hooks/use-translation';
 
-export default function SimentiDemoPage() {
+export default function códigoDemoPage() {
   const [selectedCitizen, setSelectedCitizen] = useState<Citizen | null>(null);
   const [activeTab, setActiveTab] = useState('register');
   const { t } = useTranslation();
@@ -23,10 +23,10 @@ export default function SimentiDemoPage() {
     <div className="mx-auto max-w-4xl px-4 py-6 sm:py-8">
       <div className="mb-6">
         <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
-          {t.simenti.title}
+          {t.código.title}
         </h1>
         <p className="text-muted-foreground mt-1">
-          {t.simenti.simentiPageDesc}
+          {t.código.códigoPageDesc}
         </p>
       </div>
 
@@ -34,15 +34,15 @@ export default function SimentiDemoPage() {
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="register" className="gap-1.5">
             <UserPlus className="h-4 w-4" />
-            <span className="hidden sm:inline">{t.simenti.registerTab}</span>
+            <span className="hidden sm:inline">{t.código.registerTab}</span>
           </TabsTrigger>
           <TabsTrigger value="card" className="gap-1.5">
             <CreditCard className="h-4 w-4" />
-            <span className="hidden sm:inline">{t.simenti.cardTab}</span>
+            <span className="hidden sm:inline">{t.código.cardTab}</span>
           </TabsTrigger>
           <TabsTrigger value="list" className="gap-1.5">
             <Users className="h-4 w-4" />
-            <span className="hidden sm:inline">{t.simenti.listTab}</span>
+            <span className="hidden sm:inline">{t.código.listTab}</span>
           </TabsTrigger>
         </TabsList>
 
@@ -55,15 +55,15 @@ export default function SimentiDemoPage() {
             <div className="flex flex-col items-center gap-6">
               <IdCard citizen={selectedCitizen} />
               <p className="text-sm text-muted-foreground text-center">
-                {t.simenti.qrCodeDesc}
+                {t.código.qrCodeDesc}
               </p>
             </div>
           ) : (
             <div className="text-center py-12 text-muted-foreground">
               <CreditCard className="h-12 w-12 mx-auto mb-4 opacity-30" />
-              <p>{t.simenti.noCardSelected}</p>
+              <p>{t.código.noCardSelected}</p>
               <p className="text-sm mt-1">
-                {t.simenti.noCardDesc}
+                {t.código.noCardDesc}
               </p>
             </div>
           )}

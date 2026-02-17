@@ -81,7 +81,7 @@ const EDUCACAO_MENU_LINES = [
 const CITIZEN_RESULT_LINES = [
   '--- Rezultadu ---',
   '',
-  'Simenti ID:',
+  'código ID:',
   '  GOV-GB-2026-00001',
   'Nomi: Mamadu Balde',
   'Rejiun: Gabu',
@@ -364,7 +364,7 @@ export function PhoneSimulator() {
       case '1':
         goTo(
           'consulta-id',
-          ['GOV-GB > Konsulta ID', '', 'Introduzi nomeru', 'Simenti ID:'],
+          ['GOV-GB > Konsulta ID', '', 'Introduzi nomeru', 'código ID:'],
           { inputMode: true, inputLabel: 'ID' },
         );
         break;

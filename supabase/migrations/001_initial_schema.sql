@@ -16,10 +16,10 @@ CREATE TABLE agents (
   created_at TIMESTAMPTZ DEFAULT now()
 );
 
--- CIDADÃOS (Simenti ID)
+-- CIDADÃOS (código ID)
 CREATE TABLE citizens (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  simenti_id TEXT UNIQUE NOT NULL,
+  código_id TEXT UNIQUE NOT NULL,
   full_name TEXT NOT NULL,
   birth_date DATE,
   gender TEXT CHECK (gender IN ('M', 'F', 'O')),
@@ -74,7 +74,7 @@ CREATE TABLE audit_log (
 );
 
 -- Indexes
-CREATE INDEX idx_citizens_simenti_id ON citizens(simenti_id);
+CREATE INDEX idx_citizens_código_id ON citizens(código_id);
 CREATE INDEX idx_citizens_region ON citizens(region);
 CREATE INDEX idx_citizens_created_at ON citizens(created_at);
 CREATE INDEX idx_service_requests_citizen_id ON service_requests(citizen_id);

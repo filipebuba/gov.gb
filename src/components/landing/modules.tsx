@@ -22,13 +22,13 @@ export function Modules() {
   const modules: ModuleItem[] = [
     {
       icon: <Fingerprint className="size-6" />,
-      title: t.landing.simentiTitle,
+      title: t.landing.códigoTitle,
       badge: t.landing.identityBadge,
-      description: t.landing.simentiLongDesc,
+      description: t.landing.códigoLongDesc,
       features: [
-        t.landing.simentiFeature1,
-        t.landing.simentiFeature2,
-        t.landing.simentiFeature3,
+        t.landing.códigoFeature1,
+        t.landing.códigoFeature2,
+        t.landing.códigoFeature3,
       ],
       gradient: "from-primary/10 to-primary/5",
       iconBg: "bg-primary/10 text-primary",

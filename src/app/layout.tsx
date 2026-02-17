@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "governo digital",
     "ENTD.GW",
     "identidade digital",
-    "Simenti ID",
+    "código ID",
     "USSD",
     "e-government",
     "Africa",

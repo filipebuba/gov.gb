@@ -3,7 +3,7 @@ import type { Citizen } from '@/types';
 export const demoCitizens: Citizen[] = [
   {
     id: 'c1a2b3c4-d5e6-f7a8-b9c0-d1e2f3a4b5c6',
-    simenti_id: 'GOV-GB-2026-00001',
+    código_id: 'GOV-GB-2026-00001',
     full_name: 'Mamadu Baldé',
     birth_date: '1985-03-15',
     gender: 'M',
@@ -20,7 +20,7 @@ export const demoCitizens: Citizen[] = [
   },
   {
     id: 'c2b3c4d5-e6f7-a8b9-c0d1-e2f3a4b5c6d7',
-    simenti_id: 'GOV-GB-2026-00002',
+    código_id: 'GOV-GB-2026-00002',
     full_name: 'Fatumata Djaló',
     birth_date: '1992-07-22',
     gender: 'F',
@@ -37,7 +37,7 @@ export const demoCitizens: Citizen[] = [
   },
   {
     id: 'c3c4d5e6-f7a8-b9c0-d1e2-f3a4b5c6d7e8',
-    simenti_id: 'GOV-GB-2026-00003',
+    código_id: 'GOV-GB-2026-00003',
     full_name: 'Braima Sanhá',
     birth_date: '1978-11-05',
     gender: 'M',
@@ -54,7 +54,7 @@ export const demoCitizens: Citizen[] = [
   },
   {
     id: 'c4d5e6f7-a8b9-c0d1-e2f3-a4b5c6d7e8f9',
-    simenti_id: 'GOV-GB-2026-00004',
+    código_id: 'GOV-GB-2026-00004',
     full_name: 'Aminata Camará',
     birth_date: '2001-04-30',
     gender: 'F',
@@ -71,7 +71,7 @@ export const demoCitizens: Citizen[] = [
   },
   {
     id: 'c5e6f7a8-b9c0-d1e2-f3a4-b5c6d7e8f9a0',
-    simenti_id: 'GOV-GB-2026-00005',
+    código_id: 'GOV-GB-2026-00005',
     full_name: 'Idrissa Mané',
     birth_date: '1995-09-12',
     gender: 'M',
@@ -88,7 +88,7 @@ export const demoCitizens: Citizen[] = [
   },
   {
     id: 'c6f7a8b9-c0d1-e2f3-a4b5-c6d7e8f9a0b1',
-    simenti_id: 'GOV-GB-2026-00006',
+    código_id: 'GOV-GB-2026-00006',
     full_name: 'Cadijatu Vieira',
     birth_date: '1988-12-25',
     gender: 'F',
@@ -105,7 +105,7 @@ export const demoCitizens: Citizen[] = [
   },
   {
     id: 'c7a8b9c0-d1e2-f3a4-b5c6-d7e8f9a0b1c2',
-    simenti_id: 'GOV-GB-2026-00007',
+    código_id: 'GOV-GB-2026-00007',
     full_name: 'Ussumane Embaló',
     birth_date: '1970-06-08',
     gender: 'M',
@@ -122,7 +122,7 @@ export const demoCitizens: Citizen[] = [
   },
   {
     id: 'c8b9c0d1-e2f3-a4b5-c6d7-e8f9a0b1c2d3',
-    simenti_id: 'GOV-GB-2026-00008',
+    código_id: 'GOV-GB-2026-00008',
     full_name: 'Sira Indjai',
     birth_date: '1999-02-14',
     gender: 'F',
@@ -139,7 +139,7 @@ export const demoCitizens: Citizen[] = [
   },
   {
     id: 'c9c0d1e2-f3a4-b5c6-d7e8-f9a0b1c2d3e4',
-    simenti_id: 'GOV-GB-2026-00009',
+    código_id: 'GOV-GB-2026-00009',
     full_name: 'Abubacar Dabó',
     birth_date: '1983-08-19',
     gender: 'M',
@@ -156,7 +156,7 @@ export const demoCitizens: Citizen[] = [
   },
   {
     id: 'c0d1e2f3-a4b5-c6d7-e8f9-a0b1c2d3e4f5',
-    simenti_id: 'GOV-GB-2026-00010',
+    código_id: 'GOV-GB-2026-00010',
     full_name: 'Nené Ture',
     birth_date: '2003-01-07',
     gender: 'F',

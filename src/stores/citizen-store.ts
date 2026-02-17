@@ -4,7 +4,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { Citizen, Region } from '@/types';
 import { demoCitizens } from '@/lib/demo-data';
-import { generateSimentiId } from '@/lib/simenti';
+import { generatecódigoId } from '@/lib/código';
 
 interface CitizenStore {
   citizens: Citizen[];
@@ -14,9 +14,9 @@ interface CitizenStore {
 
   // Actions
   loadDemoData: () => void;
-  addCitizen: (data: Omit<Citizen, 'id' | 'simenti_id' | 'created_at' | 'updated_at' | 'synced_at' | 'registered_offline'>) => Citizen;
+  addCitizen: (data: Omit<Citizen, 'id' | 'código_id' | 'created_at' | 'updated_at' | 'synced_at' | 'registered_offline'>) => Citizen;
   getCitizen: (id: string) => Citizen | undefined;
-  getCitizenBySimenti: (simentiId: string) => Citizen | undefined;
+  getCitizenBycódigo: (códigoId: string) => Citizen | undefined;
   searchCitizens: (query: string) => Citizen[];
   filterByRegion: (region: Region) => Citizen[];
   setOffline: (offline: boolean) => void;
@@ -41,7 +41,7 @@ export const useCitizenStore = create<CitizenStore>()(
         const newCitizen: Citizen = {
           ...data,
           id: crypto.randomUUID(),
-          simenti_id: generateSimentiId(),
+          código_id: generatecódigoId(),
           registered_offline: isOffline,
           synced_at: isOffline ? null : now,
           created_at: now,
@@ -62,8 +62,8 @@ export const useCitizenStore = create<CitizenStore>()(
         return get().citizens.find((c) => c.id === id);
       },
 
-      getCitizenBySimenti: (simentiId) => {
-        return get().citizens.find((c) => c.simenti_id === simentiId);
+      getCitizenBycódigo: (códigoId) => {
+        return get().citizens.find((c) => c.código_id === códigoId);
       },
 
       searchCitizens: (query) => {
@@ -71,7 +71,7 @@ export const useCitizenStore = create<CitizenStore>()(
         return get().citizens.filter(
           (c) =>
             c.full_name.toLowerCase().includes(q) ||
-            c.simenti_id.toLowerCase().includes(q) ||
+            c.código_id.toLowerCase().includes(q) ||
             c.region.toLowerCase().includes(q) ||
             (c.tabanca && c.tabanca.toLowerCase().includes(q))
         );

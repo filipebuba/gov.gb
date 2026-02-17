@@ -21,10 +21,10 @@ export default function DemoPage() {
 
   const modules = [
     {
-      href: '/demo/simenti',
+      href: '/demo/código',
       icon: Fingerprint,
-      title: 'Simenti ID',
-      description: t.demo.simentiModuleDesc,
+      title: 'código ID',
+      description: t.demo.códigoModuleDesc,
       badge: t.demo.identityBadge,
       color: 'text-emerald-600',
       bgColor: 'bg-emerald-50',
@@ -155,9 +155,9 @@ export default function DemoPage() {
               {t.demo.flowDescription}
             </p>
           </div>
-          <Link href="/demo/simenti">
+          <Link href="/demo/código">
             <Button className="gap-2 whitespace-nowrap">
-              {t.demo.startSimenti}
+              {t.demo.startcódigo}
               <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>

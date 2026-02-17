@@ -31,7 +31,7 @@ export const REGIONS: Region[] = [
 
 export interface Citizen {
   id: string;
-  simenti_id: string;
+  código_id: string;
   full_name: string;
   birth_date: string | null;
   gender: Gender;

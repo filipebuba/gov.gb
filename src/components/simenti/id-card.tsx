@@ -36,11 +36,11 @@ export function IdCard({ citizen }: IdCardProps) {
   function formatGender(g: string): string {
     switch (g) {
       case 'M':
-        return t.simenti.male;
+        return t.código.male;
       case 'F':
-        return t.simenti.female;
+        return t.código.female;
       case 'O':
-        return t.simenti.other;
+        return t.código.other;
       default:
         return g;
     }
@@ -69,10 +69,10 @@ export function IdCard({ citizen }: IdCardProps) {
             {/* Header */}
             <div className="text-center">
               <h2 className="text-[10px] font-bold uppercase tracking-wider text-green-800 sm:text-xs">
-                {t.simenti.republic}
+                {t.código.republic}
               </h2>
               <p className="text-[9px] text-muted-foreground sm:text-[10px]">
-                Simenti ID &mdash; Identidade Digital
+                código ID &mdash; Identidade Digital
               </p>
             </div>
 
@@ -91,7 +91,7 @@ export function IdCard({ citizen }: IdCardProps) {
               <div className="min-w-0 flex-1 space-y-1">
                 <div>
                   <p className="text-[9px] uppercase tracking-wider text-muted-foreground">
-                    {t.simenti.nameField}
+                    {t.código.nameField}
                   </p>
                   <p className="truncate text-sm font-semibold leading-tight text-foreground sm:text-base">
                     {citizen.full_name}
@@ -100,7 +100,7 @@ export function IdCard({ citizen }: IdCardProps) {
                 <div className="grid grid-cols-2 gap-x-3 gap-y-0.5">
                   <div>
                     <p className="text-[8px] uppercase tracking-wider text-muted-foreground">
-                      {t.simenti.birthField}
+                      {t.código.birthField}
                     </p>
                     <p className="text-[10px] font-medium sm:text-xs">
                       {formatDate(citizen.birth_date)}
@@ -108,7 +108,7 @@ export function IdCard({ citizen }: IdCardProps) {
                   </div>
                   <div>
                     <p className="text-[8px] uppercase tracking-wider text-muted-foreground">
-                      {t.simenti.genderField}
+                      {t.código.genderField}
                     </p>
                     <p className="text-[10px] font-medium sm:text-xs">
                       {formatGender(citizen.gender)}
@@ -116,14 +116,14 @@ export function IdCard({ citizen }: IdCardProps) {
                   </div>
                   <div>
                     <p className="text-[8px] uppercase tracking-wider text-muted-foreground">
-                      {t.simenti.regionField}
+                      {t.código.regionField}
                     </p>
                     <p className="text-[10px] font-medium sm:text-xs">{citizen.region}</p>
                   </div>
                   {citizen.tabanca && (
                     <div>
                       <p className="text-[8px] uppercase tracking-wider text-muted-foreground">
-                        {t.simenti.tabancaField}
+                        {t.código.tabancaField}
                       </p>
                       <p className="truncate text-[10px] font-medium sm:text-xs">
                         {citizen.tabanca}
@@ -139,7 +139,7 @@ export function IdCard({ citizen }: IdCardProps) {
               {/* QR Code */}
               <div className="flex items-center gap-2">
                 <QRCodeSVG
-                  value={citizen.simenti_id}
+                  value={citizen.código_id}
                   size={44}
                   level="M"
                   bgColor="transparent"
@@ -150,16 +150,16 @@ export function IdCard({ citizen }: IdCardProps) {
                 </div>
               </div>
 
-              {/* Simenti ID number */}
+              {/* código ID number */}
               <div className="text-right">
                 <p className="text-[8px] uppercase tracking-wider text-muted-foreground">
-                  Simenti ID
+                  código ID
                 </p>
                 <p className="font-mono text-sm font-bold tracking-wide text-green-800 sm:text-base">
-                  {citizen.simenti_id}
+                  {citizen.código_id}
                 </p>
                 <p className="text-[8px] text-muted-foreground">
-                  {t.simenti.issued} {formatDate(citizen.created_at)}
+                  {t.código.issued} {formatDate(citizen.created_at)}
                 </p>
               </div>
             </div>
@@ -170,7 +170,7 @@ export function IdCard({ citizen }: IdCardProps) {
       {/* Download button (visual only for MVP) */}
       <Button variant="outline" className="gap-2" disabled>
         <Download className="h-4 w-4" />
-        {t.simenti.downloadCardSoon}
+        {t.código.downloadCardSoon}
       </Button>
     </div>
   );

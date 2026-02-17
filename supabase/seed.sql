@@ -11,15 +11,15 @@ INSERT INTO agents (id, name, region, phone, status, citizens_registered) VALUES
 
 -- Insert demo services
 INSERT INTO services (id, name, name_kr, category, description, requirements, estimated_days, fee_xof, available_offline, ussd_code) VALUES
-  ('e1a2b3c4-d5e6-f7a8-b9c0-d1e2f3a4b5c6', 'Certidão de Nascimento', 'Sertidun di Nasimentu', 'Registo Civil', 'Emissão de certidão de nascimento para cidadãos guineenses.', ARRAY['Simenti ID', 'Testemunha maior de idade', 'Dados dos pais'], 5, 0, true, '*244*1*1#'),
-  ('e2b3c4d5-e6f7-a8b9-c0d1-e2f3a4b5c6d7', 'Registo de Terreno', 'Registu di Teru', 'Propriedade', 'Registo de propriedade de terreno com geolocalização.', ARRAY['Simenti ID', 'Localização GPS', 'Aprovação do Régulo'], 30, 5000, true, '*244*1*2#'),
-  ('e3c4d5e6-f7a8-b9c0-d1e2-f3a4b5c6d7e8', 'Consulta Médica', 'Konsulta Médiku', 'Saúde', 'Agendamento de consulta médica no centro de saúde regional.', ARRAY['Simenti ID'], 3, 0, false, '*244*2*1#'),
-  ('e4d5e6f7-a8b9-c0d1-e2f3-a4b5c6d7e8f9', 'Cartão de Vacinação', 'Kartun di Vasinason', 'Saúde', 'Emissão de cartão de vacinação digital.', ARRAY['Simenti ID', 'Registos de vacinação'], 1, 0, true, '*244*2*2#'),
-  ('e5e6f7a8-b9c0-d1e2-f3a4-b5c6d7e8f9a0', 'Matrícula Escolar', 'Matríkula Skolar', 'Educação', 'Inscrição em escola pública da região.', ARRAY['Simenti ID', 'Certidão de Nascimento', 'Dados do encarregado'], 7, 0, true, '*244*3*1#'),
-  ('e6f7a8b9-c0d1-e2f3-a4b5-c6d7e8f9a0b1', 'Licença de Pesca', 'Lisensa di Peska', 'Economia', 'Licença para pesca artesanal costeira.', ARRAY['Simenti ID', 'Registo de embarcação'], 14, 10000, false, '*244*4*1#');
+  ('e1a2b3c4-d5e6-f7a8-b9c0-d1e2f3a4b5c6', 'Certidão de Nascimento', 'Sertidun di Nasimentu', 'Registo Civil', 'Emissão de certidão de nascimento para cidadãos guineenses.', ARRAY['código ID', 'Testemunha maior de idade', 'Dados dos pais'], 5, 0, true, '*244*1*1#'),
+  ('e2b3c4d5-e6f7-a8b9-c0d1-e2f3a4b5c6d7', 'Registo de Terreno', 'Registu di Teru', 'Propriedade', 'Registo de propriedade de terreno com geolocalização.', ARRAY['código ID', 'Localização GPS', 'Aprovação do Régulo'], 30, 5000, true, '*244*1*2#'),
+  ('e3c4d5e6-f7a8-b9c0-d1e2-f3a4b5c6d7e8', 'Consulta Médica', 'Konsulta Médiku', 'Saúde', 'Agendamento de consulta médica no centro de saúde regional.', ARRAY['código ID'], 3, 0, false, '*244*2*1#'),
+  ('e4d5e6f7-a8b9-c0d1-e2f3-a4b5c6d7e8f9', 'Cartão de Vacinação', 'Kartun di Vasinason', 'Saúde', 'Emissão de cartão de vacinação digital.', ARRAY['código ID', 'Registos de vacinação'], 1, 0, true, '*244*2*2#'),
+  ('e5e6f7a8-b9c0-d1e2-f3a4-b5c6d7e8f9a0', 'Matrícula Escolar', 'Matríkula Skolar', 'Educação', 'Inscrição em escola pública da região.', ARRAY['código ID', 'Certidão de Nascimento', 'Dados do encarregado'], 7, 0, true, '*244*3*1#'),
+  ('e6f7a8b9-c0d1-e2f3-a4b5-c6d7e8f9a0b1', 'Licença de Pesca', 'Lisensa di Peska', 'Economia', 'Licença para pesca artesanal costeira.', ARRAY['código ID', 'Registo de embarcação'], 14, 10000, false, '*244*4*1#');
 
 -- Insert demo citizens
-INSERT INTO citizens (id, simenti_id, full_name, birth_date, gender, region, tabanca, phone, registered_by, registered_offline, synced_at) VALUES
+INSERT INTO citizens (id, código_id, full_name, birth_date, gender, region, tabanca, phone, registered_by, registered_offline, synced_at) VALUES
   ('c1a2b3c4-d5e6-f7a8-b9c0-d1e2f3a4b5c6', 'GOV-GB-2026-00001', 'Mamadu Baldé', '1985-03-15', 'M', 'Gabú', 'Sonaco', '+245 955 123 456', 'a1b2c3d4-e5f6-a7b8-c9d0-e1f2a3b4c5d6', false, '2026-01-15 10:30:00+00'),
   ('c2b3c4d5-e6f7-a8b9-c0d1-e2f3a4b5c6d7', 'GOV-GB-2026-00002', 'Fatumata Djaló', '1992-07-22', 'F', 'Bissau', NULL, '+245 966 789 012', 'a1b2c3d4-e5f6-a7b8-c9d0-e1f2a3b4c5d6', false, '2026-01-16 14:20:00+00'),
   ('c3c4d5e6-f7a8-b9c0-d1e2-f3a4b5c6d7e8', 'GOV-GB-2026-00003', 'Braima Sanhá', '1978-11-05', 'M', 'Bafatá', 'Bambadinca', '+245 977 345 678', 'a2b3c4d5-e6f7-a8b9-c0d1-e2f3a4b5c6d7', true, '2026-01-18 08:45:00+00'),
