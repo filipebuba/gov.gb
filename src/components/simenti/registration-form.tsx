@@ -322,7 +322,7 @@ export function RegistrationForm({ onSuccess }: RegistrationFormProps) {
               <div className="text-sm text-muted-foreground">
                 <p>{t.código.citizenPhoto}</p>
                 <p className="mt-1 text-xs">
-                  {photoPreview ? t.código.photoChangeHint ?? 'Clique para alterar' : t.código.photoUploadHint ?? 'Clique para carregar foto'}
+                  {photoPreview ? t.código.photoChangeHint : t.código.photoUploadHint}
                 </p>
               </div>
             </div>
