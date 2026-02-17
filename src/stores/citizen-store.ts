@@ -4,7 +4,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { Citizen, Region } from '@/types';
 import { demoCitizens } from '@/lib/demo-data';
-import { generatecódigoId } from '@/lib/código';
+import { generatecódigoId } from '@/lib/simenti';
 
 interface CitizenStore {
   citizens: Citizen[];

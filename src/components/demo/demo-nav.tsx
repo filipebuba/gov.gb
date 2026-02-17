@@ -26,7 +26,7 @@ export function DemoNav() {
 
   const navItems = [
     { href: '/demo', label: t.common.home, icon: Home },
-    { href: '/demo/código', label: 'código ID', icon: Fingerprint },
+    { href: '/demo/simenti', label: 'Simenti ID', icon: Fingerprint },
     { href: '/demo/ussd', label: 'USSD *244#', icon: Smartphone },
     { href: '/demo/dashboard', label: t.common.dashboard, icon: BarChart3 },
   ];

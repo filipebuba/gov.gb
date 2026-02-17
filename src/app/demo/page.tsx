@@ -21,7 +21,7 @@ export default function DemoPage() {
 
   const modules = [
     {
-      href: '/demo/código',
+      href: '/demo/simenti',
       icon: Fingerprint,
       title: 'código ID',
       description: t.demo.códigoModuleDesc,
@@ -155,7 +155,7 @@ export default function DemoPage() {
               {t.demo.flowDescription}
             </p>
           </div>
-          <Link href="/demo/código">
+          <Link href="/demo/simenti">
             <Button className="gap-2 whitespace-nowrap">
               {t.demo.startcódigo}
               <ArrowRight className="h-4 w-4" />
