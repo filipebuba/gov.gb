@@ -32,8 +32,20 @@ export function RegistrationForm({ onSuccess }: RegistrationFormProps) {
   const [region, setRegion] = useState<Region | ''>('');
   const [tabanca, setTabanca] = useState('');
   const [phone, setPhone] = useState('');
+  const [photoPreview, setPhotoPreview] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submittedCitizen, setSubmittedCitizen] = useState<Citizen | null>(null);
+
+  function handlePhotoChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (!file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      setPhotoPreview(ev.target?.result as string);
+    };
+    reader.readAsDataURL(file);
+  }
 
   function validate(): boolean {
     const newErrors: Record<string, string> = {};
@@ -72,7 +84,7 @@ export function RegistrationForm({ onSuccess }: RegistrationFormProps) {
       region: region as Region,
       tabanca: tabanca.trim() || null,
       phone: phone ? `+245${phone.replace(/\s/g, '')}` : null,
-      photo_url: null,
+      photo_url: photoPreview,
       biometric_hash: null,
       registered_by: null,
     });
@@ -88,6 +100,7 @@ export function RegistrationForm({ onSuccess }: RegistrationFormProps) {
     setRegion('');
     setTabanca('');
     setPhone('');
+    setPhotoPreview(null);
     setErrors({});
     setSubmittedCitizen(null);
   }
@@ -280,16 +293,37 @@ export function RegistrationForm({ onSuccess }: RegistrationFormProps) {
             )}
           </div>
 
-          {/* Foto placeholder */}
+          {/* Foto */}
           <div className="space-y-2">
             <Label>{t.código.photo}</Label>
             <div className="flex items-center gap-4">
-              <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/30 bg-muted/50">
-                <Camera className="h-8 w-8 text-muted-foreground/50" />
-              </div>
+              <label
+                htmlFor="photo-upload"
+                className="flex h-24 w-24 shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-muted-foreground/30 bg-muted/50 transition-colors hover:border-primary/50 hover:bg-muted"
+              >
+                {photoPreview ? (
+                  <img
+                    src={photoPreview}
+                    alt="Preview"
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  <Camera className="h-8 w-8 text-muted-foreground/50" />
+                )}
+              </label>
+              <input
+                id="photo-upload"
+                type="file"
+                accept="image/*"
+                capture="user"
+                onChange={handlePhotoChange}
+                className="hidden"
+              />
               <div className="text-sm text-muted-foreground">
                 <p>{t.código.citizenPhoto}</p>
-                <p className="mt-1 text-xs">{t.código.photoComingSoon}</p>
+                <p className="mt-1 text-xs">
+                  {photoPreview ? t.código.photoChangeHint : t.código.photoUploadHint}
+                </p>
               </div>
             </div>
           </div>

@@ -15,6 +15,17 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  // Redirects
+  async redirects() {
+    return [
+      {
+        source: '/demo/c%C3%B3digo',
+        destination: '/demo/simenti',
+        permanent: true,
+      },
+    ];
+  },
+
   // Headers for PWA and security
   async headers() {
     return [

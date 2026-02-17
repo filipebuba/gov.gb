@@ -80,10 +80,18 @@ export function IdCard({ citizen }: IdCardProps) {
             <div className="flex flex-1 items-center gap-3 pt-2 sm:gap-4">
               {/* Left: Photo placeholder */}
               <div className="flex shrink-0 flex-col items-center gap-1">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-green-600 bg-green-100 sm:h-20 sm:w-20">
-                  <span className="text-lg font-bold text-green-800 sm:text-xl">
-                    {initials}
-                  </span>
+                <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-2 border-green-600 bg-green-100 sm:h-20 sm:w-20">
+                  {citizen.photo_url ? (
+                    <img
+                      src={citizen.photo_url}
+                      alt={citizen.full_name}
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <span className="text-lg font-bold text-green-800 sm:text-xl">
+                      {initials}
+                    </span>
+                  )}
                 </div>
               </div>
 
