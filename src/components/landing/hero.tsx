@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowRight, Play, Star } from "lucide-react";
+import { ChevronDown, Monitor, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useTranslation } from "@/hooks/use-translation";
@@ -64,10 +63,10 @@ export function Hero() {
             size="lg"
             className="h-12 rounded-xl bg-white px-8 text-base font-semibold text-primary shadow-lg shadow-black/20 transition-all hover:bg-white/90 hover:shadow-xl sm:h-14 sm:px-10 sm:text-lg"
           >
-            <Link href="/demo">
-              {t.landing.ctaDemo}
-              <ArrowRight className="ml-1 size-4 sm:size-5" />
-            </Link>
+            <a href="#roadmap">
+              {t.landing.ctaPrimary}
+              <ChevronDown className="ml-1 size-4 sm:size-5" />
+            </a>
           </Button>
           <Button
             asChild
@@ -75,22 +74,22 @@ export function Hero() {
             size="lg"
             className="h-12 rounded-xl border-white/25 bg-transparent px-8 text-base font-medium text-white backdrop-blur-sm transition-all hover:bg-white/10 hover:border-white/40 sm:h-14 sm:px-10 sm:text-lg"
           >
-            <Link href="#problem-solution">
-              <Play className="mr-1 size-4" />
-              {t.landing.ctaLearnMore}
-            </Link>
+            <a href="#live-mvp">
+              <Monitor className="mr-1 size-4" />
+              {t.landing.ctaSecondary}
+            </a>
           </Button>
         </div>
 
         {/* Trust indicators */}
         <div className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] font-medium uppercase tracking-widest text-white/30 sm:mt-16 sm:gap-x-8 sm:text-xs">
-          <span>Open-Source</span>
+          <span>{t.landing.heroIndicator1}</span>
           <span className="hidden size-1 rounded-full bg-white/20 sm:block" />
-          <span>Offline-First</span>
+          <span>{t.landing.heroIndicator2}</span>
           <span className="hidden size-1 rounded-full bg-white/20 sm:block" />
-          <span>Mobile-First</span>
+          <span>{t.landing.heroIndicator3}</span>
           <span className="hidden size-1 rounded-full bg-white/20 sm:block" />
-          <span>UNDP Aligned</span>
+          <span>{t.landing.heroIndicator4}</span>
         </div>
       </div>
 

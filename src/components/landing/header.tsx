@@ -15,6 +15,14 @@ const languages = [
   { code: "FR", locale: "fr" as Locale, label: "Français" },
 ];
 
+const navLinks = [
+  { key: "navInitiative" as const, href: "#initiative" },
+  { key: "navRoadmap" as const, href: "#roadmap" },
+  { key: "navPolicy" as const, href: "#policy" },
+  { key: "navResearch" as const, href: "#research" },
+  { key: "navLiveMvp" as const, href: "#live-mvp" },
+];
+
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { t, locale, setLocale } = useTranslation();
@@ -58,10 +66,24 @@ export function Header() {
               ))}
             </div>
 
+            {/* Anchor nav links */}
+            <div className="mx-2 h-6 w-px bg-border" />
+            <div className="flex items-center gap-3">
+              {navLinks.map((link) => (
+                <a
+                  key={link.key}
+                  href={link.href}
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {t.landing[link.key]}
+                </a>
+              ))}
+            </div>
+
             <div className="mx-2 h-6 w-px bg-border" />
 
             <Button asChild size="sm" className="rounded-lg font-semibold">
-              <Link href="/demo">{t.common.tryDemo}</Link>
+              <Link href="/demo">{t.common.viewDemos}</Link>
             </Button>
           </div>
 
@@ -91,8 +113,23 @@ export function Header() {
                 </button>
               ))}
             </div>
+
+            {/* Mobile anchor nav links */}
+            <div className="mb-3 flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link.key}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                >
+                  {t.landing[link.key]}
+                </a>
+              ))}
+            </div>
+
             <Button asChild size="lg" className="w-full rounded-lg font-semibold">
-              <Link href="/demo">{t.common.tryDemo}</Link>
+              <Link href="/demo">{t.common.viewDemos}</Link>
             </Button>
           </div>
         )}
