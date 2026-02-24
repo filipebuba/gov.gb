@@ -179,3 +179,56 @@
   );
   height: 4px;
 }
+
+/* Institutional table styles */
+.policy-table th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: oklch(0.5 0.02 155);
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid oklch(0.9 0.01 155);
+}
+
+.policy-table td {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  border-bottom: 1px solid oklch(0.94 0.005 155);
+}
+
+.policy-table tr:hover td {
+  background: oklch(0.97 0.005 155);
+}
+
+/* Status badges */
+.status-implemented {
+  background: oklch(0.93 0.08 155);
+  color: oklch(0.35 0.12 155);
+}
+
+.status-in-development {
+  background: oklch(0.93 0.08 85);
+  color: oklch(0.45 0.15 85);
+}
+
+.status-planned {
+  background: oklch(0.94 0.02 250);
+  color: oklch(0.45 0.08 250);
+}
+
+/* Timeline connector */
+.timeline-line {
+  position: absolute;
+  left: 1.25rem;
+  top: 2.5rem;
+  bottom: 0;
+  width: 2px;
+  background: oklch(0.9 0.01 155);
+}
+
+/* Smooth scrolling for anchor navigation */
+html {
+  scroll-behavior: smooth;
+}
