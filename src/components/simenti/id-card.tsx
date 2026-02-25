@@ -39,9 +39,24 @@ function formatPersonalNumber(code: string): string {
   return code;
 }
 
-function formatPhone(phone: string | null): string {
-  if (!phone) return '---';
-  return phone.replace(/(\+\d{3})(\d{2,3})(\d{2,3})(\d{2,3})/, '$1 $2 $3 $4');
+/** Inline SVG: Guinea-Bissau black star */
+function GBStar({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+    </svg>
+  );
+}
+
+function GBEmblem({ size = 40 }: { size?: number }) {
+  return (
+    <div
+      className="flex shrink-0 items-center justify-center rounded-full border-2 border-[#CE1126]/60 bg-white"
+      style={{ width: size, height: size }}
+    >
+      <GBStar className="h-[55%] w-[55%] text-[#1a1a1a]" />
+    </div>
+  );
 }
 
 export function IdCard({ citizen }: IdCardProps) {
@@ -64,14 +79,15 @@ export function IdCard({ citizen }: IdCardProps) {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <div className="flex items-center rounded-md border border-[#2f668a]/35 bg-white p-1 shadow-sm">
+      {/* Side toggle */}
+      <div className="flex items-center rounded-full border border-gray-200 bg-white p-0.5 shadow-sm">
         <button
           type="button"
           onClick={() => setActiveSide('front')}
-          className={`rounded px-3 py-1 text-sm font-medium transition-colors ${
+          className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-all ${
             activeSide === 'front'
-              ? 'bg-[#1f5e86] text-white'
-              : 'text-[#1f5e86] hover:bg-[#eaf3f8]'
+              ? 'bg-[#CE1126] text-white shadow-sm'
+              : 'text-gray-500 hover:text-gray-700'
           }`}
           aria-pressed={activeSide === 'front'}
         >
@@ -80,10 +96,10 @@ export function IdCard({ citizen }: IdCardProps) {
         <button
           type="button"
           onClick={() => setActiveSide('back')}
-          className={`rounded px-3 py-1 text-sm font-medium transition-colors ${
+          className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-all ${
             activeSide === 'back'
-              ? 'bg-[#1f5e86] text-white'
-              : 'text-[#1f5e86] hover:bg-[#eaf3f8]'
+              ? 'bg-[#CE1126] text-white shadow-sm'
+              : 'text-gray-500 hover:text-gray-700'
           }`}
           aria-pressed={activeSide === 'back'}
         >
@@ -91,272 +107,281 @@ export function IdCard({ citizen }: IdCardProps) {
         </button>
       </div>
 
+      {/* ──────── FRONT ──────── */}
       {activeSide === 'front' && (
-      <div className="w-full max-w-[760px]">
-        <div
-          className="relative overflow-hidden rounded-xl border border-[#1f5e86] shadow-lg"
-          style={{ aspectRatio: '1.586 / 1' }}
-        >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_30%,rgba(20,110,165,0.18),transparent_38%),radial-gradient(circle_at_76%_72%,rgba(12,138,88,0.15),transparent_44%),linear-gradient(125deg,#f6fafc,#eef4f9_55%,#f8fbfd)]" />
-          <div className="absolute inset-0 opacity-20 [background-size:10px_10px] [background-image:linear-gradient(to_right,#1f5e8615_1px,transparent_1px),linear-gradient(to_bottom,#1f5e8615_1px,transparent_1px)]" />
-          <div className="absolute left-0 top-0 h-full w-7 bg-gradient-to-b from-[#2f7ba8] via-[#215f88] to-[#1d5479]" />
-          <div className="absolute left-0 top-0 h-full w-2 bg-[#7fbfdf]/50" />
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <p className="rotate-[-14deg] text-[34px] font-bold tracking-[0.24em] text-[#1f5e86]/10 sm:text-[54px]">
-              DEMO
-            </p>
-          </div>
+        <div className="w-full" style={{ maxWidth: 500 }}>
+          <div
+            className="relative overflow-hidden rounded-2xl shadow-xl"
+            style={{ aspectRatio: '1.586' }}
+          >
+            {/* Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#fafcfa] via-white to-[#f5f8f5]" />
+            <div className="absolute inset-0 opacity-[0.03] [background-size:20px_20px] [background-image:repeating-conic-gradient(#009739_0%_25%,transparent_0%_50%)]" />
 
-          <div className="relative h-full pl-8 pr-3 pt-2 pb-2 sm:pl-10 sm:pr-4 sm:pt-3 sm:pb-3">
-            <div className="flex items-start justify-between border-b border-[#1f5e86]/30 pb-2 sm:pb-3">
-              <div className="flex items-start gap-2">
-                <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-full border border-[#1f5e86]/50 bg-white/70 text-[11px] font-bold text-[#1f5e86] sm:h-12 sm:w-12 sm:text-xs">
-                  GB
-                </div>
-                <div>
-                  <p className="text-[10px] font-semibold uppercase leading-tight tracking-wide text-[#19506f] sm:text-[12px]">
-                    {t.código.republic}
-                  </p>
-                  <p className="text-[9px] leading-tight text-[#2f5e76] sm:text-[10px]">
-                    Simenti ID — Carteira de Identidade Digital
-                  </p>
-                </div>
-              </div>
-              <div className="text-right">
-                <p className="text-[8px] uppercase tracking-wide text-[#4a6a7d] sm:text-[9px]">
-                  Documento de Identificacao
-                </p>
-                <p className="font-mono text-[11px] font-bold tracking-[0.1em] text-[#173f56] sm:text-[12px]">
-                  {citizen.código_id}
-                </p>
+            {/* Flag stripe left */}
+            <div className="absolute left-0 top-0 bottom-0 w-[7%] bg-[#CE1126]">
+              <div className="flex h-full items-center justify-center">
+                <GBStar className="h-4 w-4 text-black/90" />
               </div>
             </div>
 
-            <div className="grid h-[calc(100%-70px)] grid-cols-[84px_1fr_92px] gap-2 pt-2 sm:grid-cols-[108px_1fr_120px] sm:gap-3 sm:pt-3">
-              <div className="flex flex-col gap-1">
-                <div className="flex h-[94px] w-[74px] items-center justify-center overflow-hidden rounded-md border border-[#265f84]/45 bg-white/70 sm:h-[116px] sm:w-[96px]">
-                  {citizen.photo_url ? (
-                    <img
-                      src={citizen.photo_url}
-                      alt={citizen.full_name}
-                      className="h-full w-full object-cover"
-                    />
-                  ) : (
-                    <span className="text-lg font-bold text-[#1c5b80] sm:text-2xl">
-                      {initials}
-                    </span>
-                  )}
+            {/* Top/bottom accent bars */}
+            <div className="absolute left-[7%] right-0 top-0 h-1 bg-gradient-to-r from-[#FCD116] via-[#FCD116] to-[#009739]" />
+            <div className="absolute left-[7%] right-0 bottom-0 h-1 bg-gradient-to-r from-[#009739] via-[#009739] to-[#FCD116]" />
+
+            {/* DEMO watermark */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <p className="rotate-[-14deg] text-[42px] font-black tracking-[0.3em] text-[#CE1126]/[0.06]">
+                DEMO
+              </p>
+            </div>
+
+            {/* Content — all relative, flex-based */}
+            <div className="relative h-full flex flex-col" style={{ paddingLeft: '9%', paddingRight: '2.5%', paddingTop: '3%', paddingBottom: '2%' }}>
+              {/* Header */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <GBEmblem size={32} />
+                  <div>
+                    <p className="text-[10px] font-bold uppercase leading-tight tracking-wider text-[#1a1a1a] sm:text-xs">
+                      {t.código.republic}
+                    </p>
+                    <p className="text-[7px] font-medium uppercase tracking-wide text-[#009739] sm:text-[9px]">
+                      Bilhete de Identidade Digital
+                    </p>
+                  </div>
                 </div>
-                <div className="rounded-sm border border-[#2d6388]/40 bg-white/70 px-1 py-0.5 text-center">
-                  <p className="text-[7px] uppercase tracking-wide text-[#4a6a7d] sm:text-[8px]">
-                    Assinatura
+                <div className="text-right">
+                  <p className="text-[7px] uppercase tracking-widest text-gray-400">NHA ID</p>
+                  <p className="font-mono text-[11px] font-bold tracking-wide text-[#1a1a1a] sm:text-[13px]">
+                    {citizen.código_id}
                   </p>
-                  <div className="mt-1 h-[1px] w-full bg-[#346b8f]/45" />
                 </div>
               </div>
 
-              <div className="min-w-0">
-                <div className="grid grid-cols-2 gap-x-2 gap-y-1">
-                  <div className="col-span-2">
-                    <p className="text-[7px] uppercase tracking-wide text-[#4a6a7d] sm:text-[8px]">
+              {/* Divider */}
+              <div className="my-1.5 h-px bg-gradient-to-r from-[#CE1126]/30 via-[#FCD116]/40 to-[#009739]/30" />
+
+              {/* Body — 3 columns */}
+              <div className="flex flex-1 gap-3 min-h-0">
+                {/* Photo column */}
+                <div className="flex flex-col gap-1 shrink-0" style={{ width: '18%' }}>
+                  <div className="flex flex-1 items-center justify-center overflow-hidden rounded-md border-2 border-gray-200 bg-gray-50">
+                    {citizen.photo_url ? (
+                      <img
+                        src={citizen.photo_url}
+                        alt={citizen.full_name}
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-xl font-bold text-gray-400">{initials}</span>
+                    )}
+                  </div>
+                  <div className="rounded border border-gray-200 bg-white px-1 py-px text-center">
+                    <p className="text-[6px] uppercase tracking-wider text-gray-400">Assinatura</p>
+                    <div className="mt-0.5 h-px w-full bg-gray-300" />
+                  </div>
+                </div>
+
+                {/* Fields column */}
+                <div className="flex-1 min-w-0 flex flex-col justify-between">
+                  <div>
+                    <p className="text-[6px] font-semibold uppercase tracking-widest text-gray-400 sm:text-[7px]">
                       {t.código.nameField}
                     </p>
-                    <p className="truncate text-[11px] font-semibold leading-tight text-[#142f3f] sm:text-[14px]">
+                    <p className="truncate text-[12px] font-bold leading-tight text-[#1a1a1a] sm:text-sm">
                       {citizen.full_name}
                     </p>
                   </div>
-                  <div className="col-span-2">
-                    <p className="text-[7px] uppercase tracking-wide text-[#4a6a7d] sm:text-[8px]">
+                  <div>
+                    <p className="text-[6px] font-semibold uppercase tracking-widest text-gray-400 sm:text-[7px]">
                       Registro Geral
                     </p>
-                    <p className="font-mono text-[10px] font-medium text-[#142f3f] sm:text-[12px]">
+                    <p className="font-mono text-[10px] font-semibold text-[#1a1a1a] sm:text-xs">
                       {formatPersonalNumber(citizen.código_id)}
                     </p>
                   </div>
-                  <div>
-                    <p className="text-[7px] uppercase tracking-wide text-[#4a6a7d] sm:text-[8px]">
-                      {t.código.birthField}
-                    </p>
-                    <p className="text-[10px] font-medium text-[#142f3f] sm:text-[12px]">
-                      {formatDate(citizen.birth_date)}
-                    </p>
+                  <div className="grid grid-cols-2 gap-x-2">
+                    <div>
+                      <p className="text-[6px] font-semibold uppercase tracking-widest text-gray-400 sm:text-[7px]">
+                        {t.código.birthField}
+                      </p>
+                      <p className="text-[10px] font-medium text-[#1a1a1a] sm:text-xs">
+                        {formatDate(citizen.birth_date)}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-[6px] font-semibold uppercase tracking-widest text-gray-400 sm:text-[7px]">
+                        {t.código.genderField}
+                      </p>
+                      <p className="text-[10px] font-medium text-[#1a1a1a] sm:text-xs">
+                        {formatGender(citizen.gender)}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-[7px] uppercase tracking-wide text-[#4a6a7d] sm:text-[8px]">
-                      {t.código.genderField}
-                    </p>
-                    <p className="text-[10px] font-medium text-[#142f3f] sm:text-[12px]">
-                      {formatGender(citizen.gender)}
-                    </p>
+                  <div className="grid grid-cols-2 gap-x-2">
+                    <div>
+                      <p className="text-[6px] font-semibold uppercase tracking-widest text-gray-400 sm:text-[7px]">
+                        Naturalidade
+                      </p>
+                      <p className="text-[10px] font-medium text-[#1a1a1a] sm:text-xs">
+                        {citizen.region}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-[6px] font-semibold uppercase tracking-widest text-gray-400 sm:text-[7px]">
+                        {t.código.tabancaField}
+                      </p>
+                      <p className="truncate text-[10px] font-medium text-[#1a1a1a] sm:text-xs">
+                        {citizen.tabanca || '---'}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-[7px] uppercase tracking-wide text-[#4a6a7d] sm:text-[8px]">
-                      Naturalidade
-                    </p>
-                    <p className="text-[10px] font-medium text-[#142f3f] sm:text-[12px]">
-                      {citizen.region}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-[7px] uppercase tracking-wide text-[#4a6a7d] sm:text-[8px]">
-                      {t.código.tabancaField}
-                    </p>
-                    <p className="truncate text-[10px] font-medium text-[#142f3f] sm:text-[12px]">
-                      {citizen.tabanca || '---'}
-                    </p>
-                  </div>
-                  <div className="col-span-2">
-                    <p className="text-[7px] uppercase tracking-wide text-[#4a6a7d] sm:text-[8px]">
-                      Orgao Emissor
-                    </p>
-                    <p className="text-[10px] font-medium text-[#142f3f] sm:text-[12px]">
-                      Plataforma Simenti ID
-                    </p>
+                  <div className="border-t border-gray-200 pt-0.5">
+                    <div className="grid grid-cols-2 gap-x-2">
+                      <div>
+                        <p className="text-[6px] font-semibold uppercase tracking-widest text-gray-400 sm:text-[7px]">Emissão</p>
+                        <p className="text-[9px] font-medium text-[#1a1a1a] sm:text-[11px]">{formatDate(citizen.created_at)}</p>
+                      </div>
+                      <div>
+                        <p className="text-[6px] font-semibold uppercase tracking-widest text-gray-400 sm:text-[7px]">Válido Até</p>
+                        <p className="text-[9px] font-medium text-[#1a1a1a] sm:text-[11px]">{formatDate(citizen.created_at)}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="mt-2 border-t border-[#2f668a]/30 pt-1">
-                  <p className="text-[7px] uppercase tracking-wide text-[#4a6a7d] sm:text-[8px]">
-                    Valido Ate
-                  </p>
-                  <p className="text-[10px] font-medium text-[#142f3f] sm:text-[12px]">
-                    {formatDate(citizen.created_at)}
+
+                {/* QR column */}
+                <div className="flex flex-col items-center justify-center gap-1 shrink-0 rounded-lg border border-gray-200 bg-white p-1.5" style={{ width: '18%' }}>
+                  <QRCodeSVG
+                    value={citizen.código_id}
+                    size={70}
+                    level="Q"
+                    bgColor="#ffffff"
+                    fgColor="#1a1a1a"
+                    includeMargin
+                  />
+                  <p className="text-center text-[6px] font-semibold uppercase tracking-widest text-gray-400">
+                    Verificação
                   </p>
                 </div>
               </div>
 
-              <div className="flex flex-col items-center justify-between rounded-md border border-[#2f668a]/35 bg-white/70 p-1.5 sm:p-2">
-                <QRCodeSVG
-                  value={citizen.código_id}
-                  size={74}
-                  level="Q"
-                  bgColor="#ffffff"
-                  fgColor="#123e57"
-                  includeMargin
-                  className="sm:h-[86px] sm:w-[86px]"
-                />
-                <div className="w-full border-t border-[#2f668a]/30 pt-1 text-center">
-                  <p className="text-[7px] uppercase tracking-wide text-[#4a6a7d] sm:text-[8px]">
-                    Emissao
-                  </p>
-                  <p className="text-[9px] font-medium text-[#142f3f] sm:text-[10px]">
-                    {formatDate(citizen.created_at)}
-                  </p>
-                </div>
+              {/* Footer */}
+              <div className="flex items-center justify-between pt-1 text-[6px] uppercase tracking-[0.1em] text-gray-400">
+                <span>República da Guiné-Bissau</span>
+                <span className="flex items-center gap-0.5">
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#CE1126]" />
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#FCD116]" />
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#009739]" />
+                </span>
+                <span className="font-semibold">Documento Demonstrativo</span>
               </div>
-            </div>
-
-            <div className="absolute bottom-0 left-8 right-0 flex items-center justify-between border-t border-[#2f668a]/35 bg-white/55 px-2 py-1 text-[7px] uppercase tracking-[0.08em] text-[#2c5b74] sm:left-10 sm:px-3 sm:text-[8px]">
-              <span>Carteira de Identidade Digital</span>
-              <span className="font-semibold">Documento Demonstrativo</span>
             </div>
           </div>
         </div>
-      </div>
       )}
 
+      {/* ──────── BACK ──────── */}
       {activeSide === 'back' && (
-      <div className="w-full max-w-[760px]">
-        <div
-          className="relative overflow-hidden rounded-xl border border-[#1f5e86] shadow-lg"
-          style={{ aspectRatio: '1.586 / 1' }}
-        >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_28%,rgba(20,110,165,0.18),transparent_38%),radial-gradient(circle_at_24%_72%,rgba(12,138,88,0.14),transparent_44%),linear-gradient(125deg,#f8fbfd,#edf4f8_55%,#f7fbfd)]" />
-          <div className="absolute inset-0 opacity-20 [background-size:10px_10px] [background-image:linear-gradient(to_right,#1f5e8615_1px,transparent_1px),linear-gradient(to_bottom,#1f5e8615_1px,transparent_1px)]" />
+        <div className="w-full" style={{ maxWidth: 500 }}>
+          <div
+            className="relative overflow-hidden rounded-2xl shadow-xl"
+            style={{ aspectRatio: '1.586' }}
+          >
+            {/* Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#fafcfa] via-white to-[#f5f8f5]" />
+            <div className="absolute inset-0 opacity-[0.03] [background-size:20px_20px] [background-image:repeating-conic-gradient(#009739_0%_25%,transparent_0%_50%)]" />
 
-          <div className="relative h-full p-3 sm:p-4">
-            <div className="flex items-center justify-between border-b border-[#1f5e86]/30 pb-2">
-              <p className="text-[10px] font-semibold uppercase tracking-wide text-[#1b4e6b] sm:text-xs">
-                Simenti ID — Verso
-              </p>
-              <p className="font-mono text-[10px] font-bold text-[#17415a] sm:text-xs">
-                {citizen.código_id}
-              </p>
-            </div>
+            {/* Top/bottom accent bars */}
+            <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-[#CE1126] via-[#FCD116] to-[#009739]" />
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#009739] via-[#FCD116] to-[#CE1126]" />
 
-            <div className="grid h-[calc(100%-56px)] grid-cols-[1fr_120px] gap-3 pt-2 sm:grid-cols-[1fr_150px] sm:gap-4 sm:pt-3">
-              <div className="grid content-start gap-2 sm:gap-3">
-                <div className="rounded-md border border-[#2f668a]/35 bg-white/70 p-2 sm:p-3">
-                  <p className="text-[8px] uppercase tracking-wide text-[#4a6a7d] sm:text-[9px]">
-                    Verificacao Digital
+            {/* Content */}
+            <div className="relative h-full flex flex-col p-4">
+              {/* Header */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1.5">
+                  <GBEmblem size={24} />
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-[#1a1a1a] sm:text-[10px]">
+                    NHA ID — Verso
                   </p>
-                  <p className="mt-1 text-[10px] leading-snug text-[#17384d] sm:text-[12px]">
-                    Este cartao e uma credencial digital do ecossistema Simenti.
-                    O QR code permite validacao rapida do identificador do cidadao.
+                </div>
+                <p className="font-mono text-[9px] font-bold text-[#1a1a1a] sm:text-[10px]">
+                  {citizen.código_id}
+                </p>
+              </div>
+
+              <div className="my-1.5 h-px bg-gradient-to-r from-[#CE1126]/30 via-[#FCD116]/40 to-[#009739]/30" />
+
+              {/* Body: QR + info */}
+              <div className="flex flex-1 items-center justify-center gap-8 min-h-0">
+                <div className="flex flex-col items-center gap-1.5">
+                  <QRCodeSVG
+                    value={`NHA:${citizen.código_id}:${citizen.id}`}
+                    size={100}
+                    level="Q"
+                    bgColor="#ffffff"
+                    fgColor="#1a1a1a"
+                    includeMargin
+                  />
+                  <p className="text-center text-[7px] font-semibold uppercase tracking-widest text-gray-400">
+                    QR de Validação
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2">
-                  <div className="rounded-md border border-[#2f668a]/35 bg-white/70 p-2">
-                    <p className="text-[7px] uppercase tracking-wide text-[#4a6a7d] sm:text-[8px]">
-                      Nome do Titular
+                <div className="space-y-3">
+                  <div>
+                    <p className="text-[7px] font-semibold uppercase tracking-widest text-gray-400">
+                      Órgão Emissor
                     </p>
-                    <p className="truncate text-[10px] font-medium text-[#17384d] sm:text-[12px]">
-                      {citizen.full_name}
-                    </p>
-                  </div>
-                  <div className="rounded-md border border-[#2f668a]/35 bg-white/70 p-2">
-                    <p className="text-[7px] uppercase tracking-wide text-[#4a6a7d] sm:text-[8px]">
-                      Contacto
-                    </p>
-                    <p className="text-[10px] font-medium text-[#17384d] sm:text-[12px]">
-                      {formatPhone(citizen.phone)}
+                    <p className="text-[11px] font-medium text-[#1a1a1a] sm:text-[13px]">
+                      Plataforma NHA ID
                     </p>
                   </div>
-                  <div className="rounded-md border border-[#2f668a]/35 bg-white/70 p-2">
-                    <p className="text-[7px] uppercase tracking-wide text-[#4a6a7d] sm:text-[8px]">
-                      Data de Emissao
+                  <div>
+                    <p className="text-[7px] font-semibold uppercase tracking-widest text-gray-400">
+                      Data de Emissão
                     </p>
-                    <p className="text-[10px] font-medium text-[#17384d] sm:text-[12px]">
+                    <p className="text-[11px] font-medium text-[#1a1a1a] sm:text-[13px]">
                       {formatDate(citizen.created_at)}
                     </p>
                   </div>
-                  <div className="rounded-md border border-[#2f668a]/35 bg-white/70 p-2">
-                    <p className="text-[7px] uppercase tracking-wide text-[#4a6a7d] sm:text-[8px]">
-                      Canal de Registo
-                    </p>
-                    <p className="text-[10px] font-medium text-[#17384d] sm:text-[12px]">
-                      Plataforma Digital
+                  <div className="rounded border border-[#FCD116]/40 bg-[#FCD116]/5 px-2 py-1">
+                    <p className="text-[8px] leading-snug text-gray-500">
+                      Documento demonstrativo.
+                      <br />
+                      Não substitui documentos oficiais.
                     </p>
                   </div>
                 </div>
-
-                <div className="rounded-md border border-[#2f668a]/35 bg-white/70 p-2">
-                  <p className="text-[8px] uppercase tracking-wide text-[#4a6a7d] sm:text-[9px]">
-                    Observacao
-                  </p>
-                  <p className="text-[9px] leading-snug text-[#17384d] sm:text-[11px]">
-                    Documento demonstrativo para experiencia digital cidada.
-                    Nao substitui documentos fisicos oficiais emitidos por autoridade estatal.
-                  </p>
-                </div>
               </div>
 
-              <div className="flex flex-col items-center gap-2 rounded-md border border-[#2f668a]/35 bg-white/70 p-2 sm:gap-3 sm:p-3">
-                <QRCodeSVG
-                  value={`SIMENTI:${citizen.código_id}:${citizen.id}`}
-                  size={100}
-                  level="Q"
-                  bgColor="#ffffff"
-                  fgColor="#123e57"
-                  includeMargin
-                  className="sm:h-[122px] sm:w-[122px]"
-                />
-                <p className="text-center text-[8px] uppercase tracking-wide text-[#355f77] sm:text-[9px]">
-                  QR de Validacao
+              {/* MRZ */}
+              <div className="mt-auto rounded bg-gray-50 px-2 py-1.5">
+                <p className="font-mono text-[8px] leading-relaxed tracking-[0.12em] text-gray-400">
+                  {`IDG<<${citizen.full_name.replace(/\s+/g, '<').toUpperCase()}<<<<<<<<<`}
+                  <br />
+                  {`${citizen.código_id.replace(/-/g, '')}<<${citizen.birth_date ? citizen.birth_date.replace(/-/g, '').slice(2, 8) : '000000'}<${citizen.gender}<<<<<<<<<<<<<<`}
                 </p>
               </div>
-            </div>
 
-            <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between border-t border-[#2f668a]/35 bg-white/55 px-3 py-1 text-[7px] uppercase tracking-[0.08em] text-[#2c5b74] sm:text-[8px]">
-              <span>Governanca Digital Inclusiva</span>
-              <span className="font-semibold">Simenti ID</span>
+              {/* Footer */}
+              <div className="flex items-center justify-between pt-1 text-[6px] uppercase tracking-[0.1em] text-gray-400">
+                <span>Governança Digital Inclusiva</span>
+                <span className="flex items-center gap-0.5">
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#CE1126]" />
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#FCD116]" />
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#009739]" />
+                </span>
+                <span className="font-semibold">NHA ID</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       )}
 
-      {/* Download button (visual only for MVP) */}
+      {/* Download button */}
       <Button variant="outline" className="gap-2" disabled>
         <Download className="h-4 w-4" />
         {t.código.downloadCardSoon}
