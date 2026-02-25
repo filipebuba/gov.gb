@@ -109,7 +109,7 @@ export function IdCard({ citizen }: IdCardProps) {
 
       {/* ──────── FRONT ──────── */}
       {activeSide === 'front' && (
-        <div className="w-full" style={{ maxWidth: 500 }}>
+        <div className="w-full" style={{ maxWidth: 680 }}>
           <div
             className="relative overflow-hidden rounded-2xl shadow-xl"
             style={{ aspectRatio: '1.586' }}
@@ -284,7 +284,7 @@ export function IdCard({ citizen }: IdCardProps) {
 
       {/* ──────── BACK ──────── */}
       {activeSide === 'back' && (
-        <div className="w-full" style={{ maxWidth: 500 }}>
+        <div className="w-full" style={{ maxWidth: 680 }}>
           <div
             className="relative overflow-hidden rounded-2xl shadow-xl"
             style={{ aspectRatio: '1.586' }}
@@ -298,57 +298,57 @@ export function IdCard({ citizen }: IdCardProps) {
             <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#009739] via-[#FCD116] to-[#CE1126]" />
 
             {/* Content */}
-            <div className="relative h-full flex flex-col p-4">
+            <div className="relative h-full flex flex-col p-3 sm:p-4">
               {/* Header */}
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between pb-1.5">
                 <div className="flex items-center gap-1.5">
                   <GBEmblem size={24} />
-                  <p className="text-[9px] font-bold uppercase tracking-wider text-[#1a1a1a] sm:text-[10px]">
-                    NHA ID — Verso
+                  <p className="text-[8px] font-bold uppercase tracking-wider text-[#1a1a1a] sm:text-[10px]">
+                    NHA ID
                   </p>
                 </div>
-                <p className="font-mono text-[9px] font-bold text-[#1a1a1a] sm:text-[10px]">
+                <p className="font-mono text-[8px] font-bold text-[#1a1a1a] sm:text-[10px]">
                   {citizen.código_id}
                 </p>
               </div>
 
-              <div className="my-1.5 h-px bg-gradient-to-r from-[#CE1126]/30 via-[#FCD116]/40 to-[#009739]/30" />
+              <div className="h-px bg-gradient-to-r from-[#CE1126]/30 via-[#FCD116]/40 to-[#009739]/30" />
 
-              {/* Body: QR + info */}
-              <div className="flex flex-1 items-center justify-center gap-8 min-h-0">
-                <div className="flex flex-col items-center gap-1.5">
+              {/* Body: QR left + info right */}
+              <div className="flex flex-1 items-center justify-center gap-6 min-h-0 py-2">
+                <div className="flex flex-col items-center gap-1 shrink-0">
                   <QRCodeSVG
                     value={`NHA:${citizen.código_id}:${citizen.id}`}
-                    size={100}
+                    size={76}
                     level="Q"
                     bgColor="#ffffff"
                     fgColor="#1a1a1a"
                     includeMargin
                   />
-                  <p className="text-center text-[7px] font-semibold uppercase tracking-widest text-gray-400">
+                  <p className="text-center text-[6px] font-semibold uppercase tracking-widest text-gray-400">
                     QR de Validação
                   </p>
                 </div>
 
-                <div className="space-y-3">
+                <div className="space-y-2">
                   <div>
-                    <p className="text-[7px] font-semibold uppercase tracking-widest text-gray-400">
+                    <p className="text-[6px] font-semibold uppercase tracking-widest text-gray-400 sm:text-[7px]">
                       Órgão Emissor
                     </p>
-                    <p className="text-[11px] font-medium text-[#1a1a1a] sm:text-[13px]">
+                    <p className="text-[10px] font-medium text-[#1a1a1a] sm:text-[12px]">
                       Plataforma NHA ID
                     </p>
                   </div>
                   <div>
-                    <p className="text-[7px] font-semibold uppercase tracking-widest text-gray-400">
+                    <p className="text-[6px] font-semibold uppercase tracking-widest text-gray-400 sm:text-[7px]">
                       Data de Emissão
                     </p>
-                    <p className="text-[11px] font-medium text-[#1a1a1a] sm:text-[13px]">
+                    <p className="text-[10px] font-medium text-[#1a1a1a] sm:text-[12px]">
                       {formatDate(citizen.created_at)}
                     </p>
                   </div>
                   <div className="rounded border border-[#FCD116]/40 bg-[#FCD116]/5 px-2 py-1">
-                    <p className="text-[8px] leading-snug text-gray-500">
+                    <p className="text-[7px] leading-snug text-gray-500">
                       Documento demonstrativo.
                       <br />
                       Não substitui documentos oficiais.
@@ -357,22 +357,13 @@ export function IdCard({ citizen }: IdCardProps) {
                 </div>
               </div>
 
-              {/* MRZ */}
-              <div className="mt-auto rounded bg-gray-50 px-2 py-1.5">
-                <p className="font-mono text-[8px] leading-relaxed tracking-[0.12em] text-gray-400">
-                  {`IDG<<${citizen.full_name.replace(/\s+/g, '<').toUpperCase()}<<<<<<<<<`}
-                  <br />
-                  {`${citizen.código_id.replace(/-/g, '')}<<${citizen.birth_date ? citizen.birth_date.replace(/-/g, '').slice(2, 8) : '000000'}<${citizen.gender}<<<<<<<<<<<<<<`}
-                </p>
-              </div>
-
               {/* Footer */}
-              <div className="flex items-center justify-between pt-1 text-[6px] uppercase tracking-[0.1em] text-gray-400">
+              <div className="mt-auto flex items-center justify-between text-[5px] uppercase tracking-[0.1em] text-gray-400 sm:text-[6px]">
                 <span>Governança Digital Inclusiva</span>
                 <span className="flex items-center gap-0.5">
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#CE1126]" />
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#FCD116]" />
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#009739]" />
+                  <span className="inline-block h-1 w-1 rounded-full bg-[#CE1126]" />
+                  <span className="inline-block h-1 w-1 rounded-full bg-[#FCD116]" />
+                  <span className="inline-block h-1 w-1 rounded-full bg-[#009739]" />
                 </span>
                 <span className="font-semibold">NHA ID</span>
               </div>
