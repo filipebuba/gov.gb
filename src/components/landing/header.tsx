@@ -34,7 +34,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/favicon.svg"
+              src="/favicon.png"
               alt="GOV-GB"
               width={36}
               height={36}

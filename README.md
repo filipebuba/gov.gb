@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GOV-GB
 
-## Getting Started
+Plataforma de Governo Digital da Guiné-Bissau, com foco em identidade digital, inclusão por USSD e monitorização pública de indicadores.
 
-First, run the development server:
+## Visao Geral
+
+O projeto demonstra uma infraestrutura digital pública com tres modulos principais:
+
+- `código ID`: registo de cidadaos e geracao de identidade digital.
+- `USSD`: simulacao de acesso a servicos publicos sem internet.
+- `Dashboard`: visualizacao de metricas operacionais e de cobertura.
+
+Rotas principais:
+
+- `/` landing institucional.
+- `/demo` hub de demonstracao.
+- `/demo/simenti` modulo de identidade.
+- `/demo/ussd` simulador USSD.
+- `/demo/dashboard` painel de metricas.
+
+## Stack Tecnologica
+
+- `Next.js 16` (App Router)
+- `React 19` + `TypeScript`
+- `Tailwind CSS 4`
+- `Zustand` (estado local com persistencia)
+- `Supabase` (cliente SSR e estrutura de banco)
+- `Recharts` (graficos do dashboard)
+
+## Requisitos
+
+- `Node.js 20+`
+- `npm` (ou outro gestor compativel)
+
+## Configuracao Local
+
+1. Instalar dependencias:
+
+```bash
+npm ci
+```
+
+2. Criar arquivo `.env.local` na raiz:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://SEU-PROJETO.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=SUA_CHAVE_PUBLICA
+```
+
+3. Executar em desenvolvimento:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Abrir:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Scripts Disponiveis
 
-## Learn More
+- `npm run dev`: inicia ambiente de desenvolvimento.
+- `npm run build`: gera build de producao.
+- `npm run start`: sobe aplicacao em modo producao.
+- `npm run lint`: executa lint com ESLint.
 
-To learn more about Next.js, take a look at the following resources:
+## Banco de Dados (Supabase)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+SQL disponivel em:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `supabase/migrations/001_initial_schema.sql`
+- `supabase/seed.sql`
 
-## Deploy on Vercel
+Fluxo sugerido:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Executar a migration inicial no projeto Supabase.
+2. Aplicar `seed.sql` para popular dados de demonstracao.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Docker
+
+O repositorio inclui `Dockerfile` multi-stage.
+
+Build da imagem:
+
+```bash
+docker build -t gov-gb .
+```
+
+Executar container:
+
+```bash
+docker run --rm -p 3000:3000 \
+  -e NEXT_PUBLIC_SUPABASE_URL=https://SEU-PROJETO.supabase.co \
+  -e NEXT_PUBLIC_SUPABASE_ANON_KEY=SUA_CHAVE_PUBLICA \
+  gov-gb
+```
+
+## Estrutura de Pastas
+
+```text
+src/
+  app/                 # rotas e layouts (App Router)
+  components/          # componentes de UI e modulos
+  hooks/               # hooks customizados
+  lib/                 # utilitarios, i18n, dados demo, supabase
+  stores/              # estado global (zustand)
+  types/               # tipos TypeScript
+supabase/
+  migrations/          # schema SQL
+  seed.sql             # dados de demonstracao
+public/                # assets estaticos
+```
+
+## Observacoes
+
+- O projeto inclui suporte multi-idioma (`pt`, `en`, `kr`, `fr`).
+- A demo usa dados locais e persistencia no navegador para simulacao offline-first.
+
+## Documentacao
+
+- [README.md](README.md)
+- [LICENSE (Apache-2.0)](LICENSE)
+- [NOTICE](NOTICE)
+- [Contributing (PT)](docs/pt/CONTRIBUTING.md)
+- [Contributing (EN)](docs/en/CONTRIBUTING.md)
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- [Docs Index](docs/README.md)
+- [Documentos em Portugues](docs/pt)
+- [Documents in English](docs/en)
