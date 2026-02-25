@@ -19,7 +19,7 @@ export function Footer() {
         <div className="text-center">
           <div className="mb-4 flex items-center justify-center gap-2">
             <Image
-              src="/favicon.svg"
+              src="/favicon.png"
               alt="GOV-GB"
               width={32}
               height={32}
