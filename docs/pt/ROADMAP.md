@@ -7,7 +7,7 @@ Este roadmap organiza as proximas entregas do **GOV-GB** por horizonte temporal.
 
 - Consolidar a landing institucional e narrativa do projeto.
 - Melhorar cobertura de traducoes (`pt`, `en`, `kr`, `fr`).
-- Refinar fluxos de demo dos modulos `simenti`, `ussd` e `dashboard`.
+- Refinar fluxos de demo dos modulos `NHA`, `ussd` e `dashboard`.
 - Padronizar documentacao essencial (`README`, `CONTRIBUTING`, `SECURITY`, `GOVERNANCE`).
 
 ### Medio Prazo (3-6 meses)

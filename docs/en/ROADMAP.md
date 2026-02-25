@@ -7,7 +7,7 @@ This roadmap organizes upcoming **GOV-GB** deliveries by time horizon. Exact dat
 
 - Consolidate institutional landing and project narrative.
 - Improve translation coverage (`pt`, `en`, `kr`, `fr`).
-- Refine demo flows for `simenti`, `ussd`, and `dashboard`.
+- Refine demo flows for `NHA`, `ussd`, and `dashboard`.
 - Standardize core documentation (`README`, `CONTRIBUTING`, `SECURITY`, `GOVERNANCE`).
 
 ### Mid Term (3-6 months)

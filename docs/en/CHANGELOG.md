@@ -10,5 +10,5 @@ This format follows [Keep a Changelog](https://keepachangelog.com/) and [Semanti
 ### Added
 
 - Initial GOV-GB platform foundation.
-- Demo modules: `simenti`, `ussd`, `dashboard`.
+- Demo modules: `NHA`, `ussd`, `dashboard`.
 - Initial institutional documentation set.
