@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { RegistrationForm } from '@/components/NHA/registration-form';
-import { IdCard } from '@/components/NHA/id-card';
-import { CitizenList } from '@/components/NHA/citizen-list';
+import { RegistrationForm } from '@/components/simenti/registration-form';
+import { IdCard } from '@/components/simenti/id-card';
+import { CitizenList } from '@/components/simenti/citizen-list';
 import type { Citizen } from '@/types';
 import { UserPlus, Users, CreditCard } from 'lucide-react';
 import { useTranslation } from '@/hooks/use-translation';
