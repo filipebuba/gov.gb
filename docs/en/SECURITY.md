@@ -16,7 +16,7 @@ This policy covers:
 If you discover a vulnerability:
 
 1. Do **not** open a public issue with sensitive details.
-2. Email: `security@gov.gb` (placeholder).
+2. Email: `nhadafilipe@gmail.com`.
 3. Include:
    - technical description;
    - reproduction steps;

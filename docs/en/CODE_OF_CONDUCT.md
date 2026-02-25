@@ -31,4 +31,4 @@ Maintainers may apply proportionate actions, including:
 
 ### Reporting
 
-To report violations, contact: `conduct@gov.gb` (placeholder).
+To report violations, contact: `nhadafilipe@gmail.com`.
