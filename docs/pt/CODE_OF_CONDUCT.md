@@ -31,5 +31,5 @@ Maintainers podem tomar medidas proporcionais, incluindo:
 
 ### Reporte
 
-Para reportar violacoes, contate: `conduct@gov.gb` (placeholder).
+Para reportar violacoes, contate: `nhadafilipe@gmail.com`.
 

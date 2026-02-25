@@ -26,4 +26,4 @@ Maintainers podem aplicar advertencia, restricao temporaria ou remocao permanent
 
 ## Reporte
 
-Contato: `conduct@gov.gb` (placeholder)
+Contato: `nhadafilipe@gmail.com`

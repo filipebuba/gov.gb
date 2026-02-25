@@ -43,4 +43,4 @@ The project seeks investors and partners for:
 
 To discuss partnership and investment:
 
-- Email: `partners@gov.gb` (placeholder)
+- Email: `nhadafilipe@gmail.com`

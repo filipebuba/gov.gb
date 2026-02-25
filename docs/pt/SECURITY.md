@@ -16,7 +16,7 @@ Esta politica cobre:
 Se descobrir uma vulnerabilidade:
 
 1. **Nao** abra issue publica com detalhes sensiveis.
-2. Envie um email para: `security@gov.gb` (placeholder).
+2. Envie um email para: `nhadafilipe@gmail.com`.
 3. Inclua:
    - descricao tecnica do problema;
    - passos para reproducao;
