@@ -14,7 +14,7 @@ Rotas principais:
 
 - `/` landing institucional.
 - `/demo` hub de demonstracao.
-- `/demo/simenti` modulo de identidade.
+- `/demo/NHA` modulo de identidade.
 - `/demo/ussd` simulador USSD.
 - `/demo/dashboard` painel de metricas.
 

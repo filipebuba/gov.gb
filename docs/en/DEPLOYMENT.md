@@ -50,7 +50,7 @@ docker run --rm -p 3000:3000 \
 - Lint with no critical errors.
 - Correct environment variables.
 - Applied and validated migrations.
-- Working routes: `/`, `/demo`, `/demo/simenti`, `/demo/ussd`, `/demo/dashboard`.
+- Working routes: `/`, `/demo`, `/demo/NHA`, `/demo/ussd`, `/demo/dashboard`.
 
 ### Rollback
 

@@ -10,6 +10,6 @@ Este formato segue o principio de [Keep a Changelog](https://keepachangelog.com/
 ### Adicionado
 
 - Estrutura inicial da plataforma GOV-GB.
-- Modulos demonstrativos: `simenti`, `ussd`, `dashboard`.
+- Modulos demonstrativos: `NHA`, `ussd`, `dashboard`.
 - Documentacao institucional inicial.
 

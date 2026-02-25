@@ -7,7 +7,7 @@ Este documento descreve a arquitetura tecnica do **GOV-GB** em nivel de sistema.
 
 O projeto e uma aplicacao web baseada em `Next.js` com modulos de demonstracao para:
 
-- identidade digital (`simenti`);
+- identidade digital (`NHA`);
 - acesso USSD;
 - dashboard de indicadores.
 
@@ -20,7 +20,7 @@ O projeto e uma aplicacao web baseada em `Next.js` com modulos de demonstracao p
 
 ### Modulos Principais
 
-- `src/components/simenti/*`: onboarding e representacao de identidade.
+- `src/components/NHA/*`: onboarding e representacao de identidade.
 - `src/components/ussd/*`: experiencia de servicos sem internet.
 - `src/components/dashboard/*`: metricas operacionais e cobertura.
 - `src/components/landing/*`: narrativa institucional e alinhamento estrategico.

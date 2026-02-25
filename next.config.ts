@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/demo/c%C3%B3digo',
-        destination: '/demo/simenti',
+        destination: '/demo/NHA',
         permanent: true,
       },
     ];

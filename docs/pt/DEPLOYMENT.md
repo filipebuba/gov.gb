@@ -50,7 +50,7 @@ docker run --rm -p 3000:3000 \
 - Lint sem erros criticos.
 - Variaveis de ambiente corretas.
 - Migracoes aplicadas e validadas.
-- Rotas `/`, `/demo`, `/demo/simenti`, `/demo/ussd`, `/demo/dashboard` funcionais.
+- Rotas `/`, `/demo`, `/demo/NHA`, `/demo/ussd`, `/demo/dashboard` funcionais.
 
 ### Rollback
 

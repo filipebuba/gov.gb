@@ -22,7 +22,7 @@ export function LiveMvp() {
       icon: <Fingerprint className="size-6" />,
       title: t.landing.liveMvpCódigo,
       description: t.landing.liveMvpCódigoDesc,
-      href: "/demo/simenti",
+      href: "/demo/NHA",
     },
     {
       icon: <Smartphone className="size-6" />,
